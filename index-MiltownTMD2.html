@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milltown Tex Mex &amp; Grill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blk:#0D0D0D;--near:#141414;--panel:#1A1A1A;--card:#222;
+  --org:#F07010;--yel:#F0C020;--pnk:#E8186A;--cyn:#18B4D8;
+  --red:#CC2020;--grn:#2A8840;--cre:#F5EDD8;
+  --bs:rgba(240,192,32,.18);--bm:rgba(240,192,32,.35);
+  --mu:rgba(245,237,216,.55);--dim:rgba(245,237,216,.32);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--blk);color:var(--cre);font-family:'Nunito',sans-serif;overflow-x:hidden;}
+.page{display:none;min-height:100vh;padding-top:72px;}
+.page.active{display:block;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
+  background:rgba(13,13,13,.97);backdrop-filter:blur(16px);
+  border-bottom:2px solid var(--org);
+  display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+  box-shadow:0 4px 28px rgba(240,112,16,.2);}
+.nlogo{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.nlogo img{height:48px;width:48px;object-fit:cover;border-radius:50%;border:2px solid var(--org);box-shadow:0 0 12px rgba(240,112,16,.45);}
+.nlt{display:flex;flex-direction:column;line-height:1;}
+.nlt .n1{font-family:'Fredoka One',cursive;font-size:1.2rem;color:var(--org);}
+.nlt .n2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--yel);}
+.nlinks{display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+.nlinks a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mu);text-decoration:none;padding:6px 11px;border-radius:3px;transition:all .2s;border:1px solid transparent;}
+.nlinks a:hover{color:var(--yel);border-color:var(--bs);}
+.nlinks a.active{color:var(--org);border-color:rgba(240,112,16,.3);}
+.social-bar{display:flex;align-items:center;gap:10px;margin-left:6px;}
+.social-bar a{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);text-decoration:none;transition:transform .2s,background .2s;}
+.social-bar a:hover{background:rgba(240,192,32,.15);transform:translateY(-2px);}
+.social-bar svg{width:18px;height:18px;fill:white;}
+.social-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-left:6px;}
+.ncta{background:var(--org)!important;color:white!important;border-color:var(--org)!important;margin-left:6px;}
+.ncta:hover{background:#d05f0a!important;transform:translateY(-1px);box-shadow:0 4px 16px rgba(240,112,16,.4);}
+
+/* ===== HOME ===== */
+#page-home{background:var(--blk);}
+.hero{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(240,112,16,.07) 0%,transparent 65%),
+             radial-gradient(ellipse 45% 55% at 10% 80%,rgba(232,24,106,.09) 0%,transparent 55%),
+             radial-gradient(ellipse 40% 50% at 88% 20%,rgba(24,180,216,.07) 0%,transparent 55%),var(--blk);}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:48px;max-width:1200px;padding:56px 32px;width:100%;}
+.hero-left{text-align:left;animation:sR 1s .2s cubic-bezier(.22,1,.36,1) both;}
+.hero-center{animation:pI .9s .1s cubic-bezier(.34,1.56,.64,1) both;}
+.hero-right{text-align:right;animation:sL 1s .2s cubic-bezier(.22,1,.36,1) both;}
+@keyframes sR{from{opacity:0;transform:translateX(-50px);}to{opacity:1;transform:translateX(0);}}
+@keyframes sL{from{opacity:0;transform:translateX(50px);}to{opacity:1;transform:translateX(0);}}
+@keyframes pI{from{opacity:0;transform:scale(.6);}to{opacity:1;transform:scale(1);}}
+.hero-logo{width:260px;height:260px;object-fit:cover;border-radius:50%;
+  border:3px solid var(--org);
+  box-shadow:0 0 0 7px rgba(240,112,16,.14),0 0 0 14px rgba(240,192,32,.07),0 28px 72px rgba(0,0,0,.7),0 0 64px rgba(240,112,16,.28);
+  animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 7px rgba(240,112,16,.14),0 0 0 14px rgba(240,192,32,.07),0 28px 72px rgba(0,0,0,.7),0 0 64px rgba(240,112,16,.28);}
+  50%{box-shadow:0 0 0 9px rgba(240,112,16,.24),0 0 0 18px rgba(240,192,32,.1),0 28px 72px rgba(0,0,0,.7),0 0 96px rgba(240,112,16,.42);}
+}
+.ey{font-family:'Barlow Condensed',sans-serif;font-weight:300;font-size:.7rem;letter-spacing:.45em;text-transform:uppercase;margin-bottom:9px;}
+.ey-o{color:var(--org)}.ey-p{color:var(--pnk)}.ey-y{color:var(--yel)}
+.hero-hl{font-family:'Fredoka One',cursive;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.05;color:var(--cre);margin-bottom:14px;}
+.hl-o{color:var(--org)}.hl-y{color:var(--yel)}.hl-p{color:var(--pnk)}
+.hero-sub{font-size:.92rem;color:var(--mu);line-height:1.7;font-style:italic;margin-bottom:22px;max-width:300px;}
+.hero-right .hero-sub{margin-left:auto;}
+.hs-num{font-family:'Fredoka One',cursive;font-size:2.6rem;line-height:1;}
+.hs-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mu);}
+.hero-stat{margin-bottom:20px;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.hero-right .hero-btns{justify-content:flex-end;}
+.btn{display:inline-block;text-decoration:none;cursor:pointer;border:none;outline:none;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:13px 34px;border-radius:4px;transition:all .25s;font-size:.88rem;}
+.btn-o{background:var(--org);color:white;}.btn-o:hover{background:#d05f0a;transform:translateY(-2px);box-shadow:0 8px 28px rgba(240,112,16,.45);}
+.btn-yl{background:transparent;color:var(--yel);border:2px solid var(--yel);}.btn-yl:hover{background:rgba(240,192,32,.1);transform:translateY(-2px);}
+.btn-pk{background:transparent;color:var(--pnk);border:2px solid var(--pnk);}.btn-pk:hover{background:rgba(232,24,106,.1);transform:translateY(-2px);}
+.div-o{width:50px;height:3px;border-radius:2px;background:var(--org);margin:12px 0;}
+
+/* TICKER */
+.ticker{background:var(--org);overflow:hidden;padding:10px 0;position:relative;}
+.ticker::before,.ticker::after{content:'';position:absolute;top:0;bottom:0;z-index:2;width:56px;}
+.ticker::before{left:0;background:linear-gradient(to right,var(--org),transparent);}
+.ticker::after{right:0;background:linear-gradient(to left,var(--org),transparent);}
+.tick-track{display:flex;width:max-content;animation:tick 38s linear infinite;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.ti{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:white;padding:0 24px;white-space:nowrap;}
+.tdot{color:rgba(255,255,255,.4);padding:0 5px;}
+
+/* SPECIALS */
+.sec{padding:72px 32px;max-width:1280px;margin:0 auto;}
+.sec-head{margin-bottom:40px;}
+.sec-h2{font-family:'Fredoka One',cursive;font-size:clamp(2rem,4vw,3.2rem);color:var(--cre);}
+
+.sp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bs);border:1px solid var(--bs);}
+.sp-card{background:var(--panel);padding:30px 22px;position:relative;overflow:hidden;transition:all .3s;}
+.sp-card:hover{background:var(--card);}
+.sp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.sp-card:nth-child(1)::after{background:var(--pnk)}.sp-card:nth-child(2)::after{background:var(--org)}
+.sp-card:nth-child(3)::after{background:var(--cyn)}.sp-card:nth-child(4)::after{background:var(--yel)}
+.sp-card:nth-child(5)::after{background:var(--grn)}.sp-card:nth-child(6)::after{background:var(--red)}
+.sp-card:hover::after{transform:scaleX(1);}
+.sp-day{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;margin-bottom:8px;}
+.sp-name{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--cre);margin-bottom:8px;line-height:1.1;}
+.sp-desc{font-size:.82rem;color:var(--mu);line-height:1.6;font-style:italic;margin-bottom:14px;}
+.sp-items{display:flex;flex-direction:column;gap:3px;}
+.sp-item{font-size:.82rem;color:rgba(245,237,216,.75);}
+.sp-badge{position:absolute;top:14px;right:14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:3px 8px;}
+
+/* EVENTS */
+.ev-wrap{background:var(--near);border-top:1px solid var(--bs);border-bottom:1px solid var(--bs);padding:72px 32px;}
+.ev-inner{max-width:1100px;margin:0 auto;}
+.ev-list{margin-top:40px;display:flex;flex-direction:column;gap:2px;background:var(--bs);border:1px solid var(--bs);}
+.ev-row{background:var(--panel);padding:20px 28px;display:grid;grid-template-columns:150px 1fr auto;align-items:center;gap:22px;transition:background .25s;}
+.ev-row:hover{background:var(--card);}
+.ev-when{font-family:'Fredoka One',cursive;font-size:1rem;line-height:1.2;}
+.ev-when small{display:block;font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;color:var(--mu);margin-top:2px;}
+.ev-name{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--cre);margin-bottom:3px;}
+.ev-det{font-size:.8rem;color:var(--mu);font-style:italic;}
+.badge{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;border:1px solid;white-space:nowrap;border-radius:2px;}
+.b-o{color:var(--org);border-color:var(--org)}.b-p{color:var(--pnk);border-color:var(--pnk)}
+.b-y{color:var(--yel);border-color:var(--yel)}.b-c{color:var(--cyn);border-color:var(--cyn)}.b-g{color:var(--grn);border-color:var(--grn)}
+
+/* BIO */
+.bio-wrap{padding:72px 32px;background:var(--blk);}
+.bio-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
+.bio-logo{width:180px;height:180px;object-fit:cover;border-radius:50%;border:3px solid var(--org);box-shadow:0 0 0 6px rgba(240,112,16,.15),0 20px 50px rgba(0,0,0,.6);flex-shrink:0;}
+.bio-text .bio-title{font-family:'Fredoka One',cursive;font-size:2rem;color:var(--cre);margin-bottom:6px;}
+.bio-text .bio-title span{color:var(--org);}
+.bio-text .bio-sub{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--yel);margin-bottom:16px;}
+.bio-text p{font-size:.9rem;color:var(--mu);line-height:1.8;margin-bottom:12px;}
+.bio-text p:last-child{margin-bottom:0;}
+
+/* LOYALTY */
+.ly-wrap{padding:72px 32px;max-width:1100px;margin:0 auto;}
+.ly-card{background:linear-gradient(135deg,var(--org) 0%,#B84808 50%,#901800 100%);
+  padding:48px 54px;position:relative;overflow:hidden;display:flex;align-items:center;
+  justify-content:space-between;gap:32px;flex-wrap:wrap;border-radius:4px;}
+.ly-card::before{content:'🌶️';position:absolute;right:32px;top:50%;transform:translateY(-50%);font-size:200px;opacity:.06;pointer-events:none;}
+.ly-text h2{font-family:'Fredoka One',cursive;font-size:2.2rem;color:white;margin-bottom:9px;}
+.ly-text p{color:rgba(255,255,255,.76);font-style:italic;max-width:380px;line-height:1.6;}
+.ly-stamp{text-align:center;flex-shrink:0;background:rgba(0,0,0,.2);padding:20px 36px;border-radius:4px;}
+.ly-big{font-family:'Fredoka One',cursive;font-size:4.2rem;color:var(--yel);line-height:1;}
+.ly-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.74rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);}
+
+/* ===== MENU PAGE ===== */
+#page-menu{background:var(--blk);}
+.mh{background:linear-gradient(180deg,var(--near),var(--blk));border-bottom:2px solid var(--org);padding:52px 32px 36px;text-align:center;}
+.mh h1{font-family:'Fredoka One',cursive;font-size:clamp(2.8rem,6vw,4.5rem);color:var(--cre);}
+.mh h1 span{color:var(--org);}
+.mh p{font-style:italic;color:var(--mu);margin-top:6px;}
+.mh .bfast-banner{display:inline-flex;align-items:center;gap:10px;margin-top:16px;background:rgba(240,112,16,.15);border:1px solid rgba(240,112,16,.35);padding:8px 20px;border-radius:3px;}
+.mh .bfast-banner span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--org);}
+.mtabs{position:sticky;top:72px;z-index:50;background:rgba(13,13,13,.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bs);display:flex;overflow-x:auto;padding:0 24px;scrollbar-width:none;gap:0;}
+.mtabs::-webkit-scrollbar{display:none;}
+.mtab{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mu);background:none;border:none;padding:14px 18px;cursor:pointer;white-space:nowrap;
+  border-bottom:3px solid transparent;transition:all .2s;}
+.mtab:hover{color:var(--yel);}
+.mtab.active{color:var(--org);border-bottom-color:var(--org);}
+.mbody{padding:48px 32px;max-width:1300px;margin:0 auto;}
+.msec{display:none;}
+.msec.active{display:block;animation:fu .4s ease both;}
+@keyframes fu{from{opacity:0;transform:translateY(13px);}to{opacity:1;transform:translateY(0);}}
+.ms-h{margin-bottom:32px;}
+.ms-h h2{font-family:'Fredoka One',cursive;font-size:2.2rem;color:var(--cre);}
+.ms-h p{font-style:italic;color:var(--mu);margin-top:4px;}
+
+/* MENU ITEM CARDS — tap-to-expand */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+.mcard{background:var(--panel);border:1px solid var(--bs);border-radius:4px;overflow:hidden;transition:border-color .25s;cursor:pointer;}
+.mcard:hover{border-color:rgba(240,112,16,.4);}
+.mcard.open{border-color:var(--org);}
+.mc-img{width:100%;height:180px;object-fit:cover;display:block;}
+.mc-img.placeholder{height:0;display:none;}
+.mc-top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 8px;gap:8px;}
+.mc-name{font-family:'Fredoka One',cursive;font-size:1.05rem;color:var(--cre);line-height:1.2;}
+.mc-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;}
+.mc-price{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--yel);white-space:nowrap;}
+.mc-chev{font-size:.7rem;color:var(--mu);transition:transform .3s;}
+.mcard.open .mc-chev{transform:rotate(180deg);}
+.mc-tags{padding:0 16px 6px;display:flex;gap:5px;flex-wrap:wrap;}
+.mtag{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:2px;}
+.t-hot{background:rgba(204,32,32,.18);color:var(--red);}
+.t-veg{background:rgba(42,136,64,.18);color:var(--grn);}
+.t-pop{background:rgba(240,192,32,.14);color:var(--yel);}
+.t-sea{background:rgba(24,180,216,.14);color:var(--cyn);}
+.t-sp{background:rgba(232,24,106,.14);color:var(--pnk);}
+.mc-body{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.mcard.open .mc-body{max-height:300px;}
+.mc-desc{padding:0 16px 16px;font-size:.83rem;color:var(--mu);line-height:1.65;font-style:italic;border-top:1px solid var(--bs);padding-top:12px;margin-top:4px;}
+
+/* taco list style */
+.taco-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin-bottom:20px;}
+.tl-item{background:var(--panel);border:1px solid var(--bs);padding:12px 16px;border-radius:4px;display:flex;justify-content:space-between;align-items:center;}
+.tl-name{font-family:'Fredoka One',cursive;font-size:.95rem;color:var(--cre);}
+.tl-price{font-family:'Fredoka One',cursive;font-size:1rem;color:var(--yel);}
+.tl-item .mtag{margin-left:8px;}
+.sub-head{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--org);margin:20px 0 10px;}
+
+/* ===== ABOUT PAGE ===== */
+#page-about{background:var(--blk);}
+.about-hero{background:linear-gradient(180deg,var(--near),var(--blk));border-bottom:2px solid var(--org);padding:52px 32px 40px;text-align:center;}
+.about-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.5rem,5vw,4rem);color:var(--cre);}
+.about-hero h1 span{color:var(--org);}
+.about-body{padding:64px 32px;max-width:960px;margin:0 auto;}
+.about-grid{display:grid;grid-template-columns:240px 1fr;gap:52px;align-items:start;margin-bottom:64px;}
+.ab-logo{width:240px;height:240px;object-fit:cover;border-radius:50%;border:3px solid var(--org);
+  box-shadow:0 0 0 7px rgba(240,112,16,.14),0 0 0 14px rgba(240,192,32,.07),0 20px 50px rgba(0,0,0,.6);}
+.ab-text{}
+.ab-text h2{font-family:'Fredoka One',cursive;font-size:2rem;color:var(--cre);margin-bottom:6px;}
+.ab-text h2 span{color:var(--org);}
+.ab-kicker{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--yel);margin-bottom:18px;}
+.ab-text p{font-size:.92rem;color:var(--mu);line-height:1.85;margin-bottom:14px;}
+.ab-text p strong{color:var(--cre);font-style:normal;}
+.ab-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
+.ab-pill{background:rgba(240,112,16,.1);border:1px solid rgba(240,112,16,.3);color:var(--org);
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:6px 14px;border-radius:20px;}
+.about-values{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+.av-card{background:var(--panel);border:1px solid var(--bs);padding:24px 20px;border-radius:4px;text-align:center;}
+.av-icon{font-size:2.2rem;margin-bottom:10px;}
+.av-title{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--cre);margin-bottom:6px;}
+.av-desc{font-size:.8rem;color:var(--mu);line-height:1.6;font-style:italic;}
+
+/* ===== RESERVATIONS ===== */
+#page-reservations{background:var(--blk);}
+.rg{min-height:calc(100vh - 72px);display:grid;grid-template-columns:1fr 1fr;}
+.ri{background:var(--near);border-right:1px solid var(--bs);padding:64px 52px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.ri::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 10% 90%,rgba(240,112,16,.07) 0%,transparent 60%);}
+.ri-inn{position:relative;}
+.ri h1{font-family:'Fredoka One',cursive;font-size:clamp(2.3rem,4vw,3.6rem);line-height:1;color:var(--cre);margin-bottom:13px;}
+.ri h1 span{color:var(--org);}
+.ri .rsub{font-style:italic;color:var(--mu);margin-bottom:36px;line-height:1.7;}
+.hb-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--yel);margin-bottom:12px;}
+.hr-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--bs);}
+.hr-row:last-child{border-bottom:none;}
+.hr-day{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.08em;color:var(--mu);text-transform:uppercase;}
+.hr-time{font-family:'Fredoka One',cursive;font-size:.95rem;color:var(--yel);}
+.ri-ex{padding:16px 0;border-top:1px solid var(--bs);margin-top:4px;}
+.rf{background:var(--blk);padding:64px 52px;display:flex;flex-direction:column;justify-content:center;}
+.rf h2{font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--cre);margin-bottom:26px;}
+.fg{margin-bottom:15px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,237,216,.42);margin-bottom:6px;}
+input,select,textarea{width:100%;background:var(--panel);border:1px solid var(--bs);color:var(--cre);
+  font-family:'Nunito',sans-serif;font-size:.88rem;padding:11px 14px;border-radius:3px;outline:none;
+  transition:border-color .2s;-webkit-appearance:none;appearance:none;}
+input:focus,select:focus,textarea:focus{border-color:var(--org);}
+textarea{height:72px;resize:vertical;}
+select option{background:var(--blk);}
+.am{margin-top:6px;padding:8px 12px;font-family:'Barlow Condensed',sans-serif;font-size:.74rem;letter-spacing:.1em;border-radius:3px;display:none;}
+.am-ok{background:rgba(42,136,64,.14);color:var(--grn);border:1px solid rgba(42,136,64,.28);}
+.am-bad{background:rgba(204,32,32,.14);color:var(--red);border:1px solid rgba(204,32,32,.28);}
+.sbtn{width:100%;background:var(--org);color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:.92rem;letter-spacing:.18em;text-transform:uppercase;padding:15px;border:none;border-radius:3px;cursor:pointer;transition:all .25s;margin-top:5px;}
+.sbtn:hover{background:#d05f0a;transform:translateY(-1px);box-shadow:0 6px 20px rgba(240,112,16,.35);}
+.sbox{display:none;text-align:center;padding:36px 14px;}
+.sbox h3{font-family:'Fredoka One',cursive;font-size:2.2rem;color:var(--yel);margin-bottom:9px;}
+.sbox p{color:var(--mu);font-style:italic;margin-bottom:24px;line-height:1.6;}
+
+/* ===== ORDER PAGE ===== */
+#page-order{background:var(--blk);}
+.oh{padding:64px 32px 48px;text-align:center;background:linear-gradient(180deg,var(--near),var(--blk));border-bottom:2px solid var(--org);}
+.oh h1{font-family:'Fredoka One',cursive;font-size:clamp(2.6rem,6vw,4.2rem);color:var(--cre);}
+.oh h1 span{color:var(--org);}
+.oh p{font-style:italic;color:var(--mu);margin-top:7px;max-width:460px;margin-left:auto;margin-right:auto;}
+.ob{padding:64px 32px;max-width:1100px;margin:0 auto;}
+.ogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:48px;}
+.oc{background:var(--panel);border:1px solid var(--bs);padding:36px 24px;text-align:center;
+  transition:all .35s;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;display:block;border-radius:4px;}
+.oc::before{content:'';position:absolute;inset:0;transform:translateY(101%);transition:transform .4s cubic-bezier(.22,1,.36,1);}
+.oc-o::before{background:var(--org)}.oc-p::before{background:var(--pnk)}
+.oc-y::before{background:linear-gradient(135deg,#B88800,#F0C020)}.oc-c::before{background:linear-gradient(135deg,#0A7A98,#18B4D8)}
+.oc:hover::before{transform:translateY(0);}
+.oc>*{position:relative;z-index:1;}
+.oc-icon{font-size:2.5rem;display:block;margin-bottom:13px;transition:transform .3s;}
+.oc:hover .oc-icon{transform:scale(1.2) rotate(-6deg);}
+.oc-title{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--cre);margin-bottom:5px;}
+.oc-sub{font-size:.79rem;color:var(--mu);font-style:italic;margin-bottom:13px;line-height:1.5;transition:color .2s;}
+.oc:hover .oc-sub{color:rgba(255,255,255,.8);}
+.oc-cta{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--yel);transition:color .2s;}
+.oc:hover .oc-cta,.oc:hover .oc-title{color:white;}
+.review-cta{display:grid;gap:18px;margin-top:40px;padding:4px 0;grid-template-columns:repeat(2,minmax(0,1fr));}
+.review-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:16px;}
+.review-card h3{font-size:1.05rem;line-height:1.4;color:var(--cre);}
+.review-card .btn{width:max-content;padding:12px 22px;}
+.order-find{display:none;margin-top:40px;border-radius:4px;overflow:hidden;}
+.order-find img{width:100%;display:block;border-radius:4px;}
+.onote{border:1px solid var(--bs);padding:28px;border-radius:4px;text-align:center;background:var(--panel);margin-top:20px;}
+.onote p{font-style:italic;color:var(--mu);font-size:.86rem;line-height:1.7;}
+.onote strong{color:var(--yel);font-style:normal;}
+
+/* ===== PLAY PAGE ===== */
+#page-fun{background:var(--blk);}
+.fh{padding:64px 32px 46px;text-align:center;background:linear-gradient(180deg,var(--near),var(--blk));border-bottom:2px solid var(--pnk);}
+.fh h1{font-family:'Fredoka One',cursive;font-size:clamp(2.3rem,5vw,4.2rem);color:var(--cre);}
+.fh h1 span{color:var(--yel);}
+.fh p{font-style:italic;color:var(--mu);margin-top:7px;}
+.fb{padding:48px 32px;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:24px;}
+.gc{background:var(--panel);border:1px solid var(--bs);padding:42px;border-radius:4px;position:relative;overflow:hidden;}
+.gc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.gc-o::before{background:linear-gradient(to right,var(--org),var(--yel));}
+.gc-p::before{background:linear-gradient(to right,var(--pnk),var(--cyn));}
+.gc-y::before{background:linear-gradient(to right,var(--yel),var(--grn));}
+.gt{font-family:'Fredoka One',cursive;font-size:1.8rem;color:var(--cre);margin-bottom:5px;}
+.gd{font-style:italic;color:var(--mu);margin-bottom:28px;}
+
+/* WHEEL */
+.wcon{display:flex;flex-direction:column;align-items:center;gap:24px;}
+.wwrap{position:relative;width:280px;height:280px;}
+#spice-wheel{width:280px;height:280px;border-radius:50%;display:block;
+  box-shadow:0 0 0 4px var(--org),0 0 0 8px rgba(240,112,16,.2),0 20px 60px rgba(0,0,0,.6);cursor:pointer;}
+.wptr{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:0;height:0;
+  border-left:12px solid transparent;border-right:12px solid transparent;border-top:24px solid var(--yel);
+  z-index:10;filter:drop-shadow(0 2px 6px rgba(240,192,32,.7));}
+.wres{text-align:center;min-height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.wr-dish{font-family:'Fredoka One',cursive;font-size:1.7rem;color:var(--yel);margin-bottom:4px;opacity:0;transition:opacity .4s;}
+.wr-desc{font-style:italic;font-size:.82rem;color:var(--mu);opacity:0;transition:opacity .4s .15s;max-width:380px;text-align:center;}
+.wres.rev .wr-dish,.wres.rev .wr-desc{opacity:1;}
+#spin-btn{background:var(--org);color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:.92rem;letter-spacing:.2em;text-transform:uppercase;padding:13px 48px;border:none;border-radius:3px;cursor:pointer;transition:all .25s;}
+#spin-btn:hover:not(:disabled){background:#d05f0a;transform:translateY(-2px);}
+#spin-btn:disabled{opacity:.45;cursor:not-allowed;}
+
+/* TRIVIA */
+.tv-score{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--yel);margin-bottom:20px;}
+.tv-q{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--cre);margin-bottom:6px;line-height:1.35;}
+.tv-num{color:var(--org);}
+.tv-cat{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pnk);margin-bottom:16px;}
+.tv-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+.tv-opt{background:var(--card);border:1px solid var(--bs);color:rgba(245,237,216,.78);
+  font-family:'Nunito',sans-serif;font-size:.88rem;padding:12px 18px;border-radius:3px;cursor:pointer;text-align:left;transition:all .2s;}
+.tv-opt:hover:not(:disabled){border-color:var(--org);color:var(--cre);background:rgba(240,112,16,.08);}
+.tv-opt.correct{border-color:var(--grn)!important;background:rgba(42,136,64,.18)!important;color:var(--grn)!important;}
+.tv-opt.wrong{border-color:var(--red)!important;background:rgba(204,32,32,.15)!important;color:var(--red)!important;}
+.tv-opt:disabled{cursor:default;}
+.tv-feedback{min-height:48px;padding:10px 16px;border-radius:3px;margin-bottom:14px;font-size:.85rem;line-height:1.6;display:none;}
+.tv-feedback.show{display:block;}
+.tv-feedback.ok{background:rgba(42,136,64,.14);color:var(--grn);border:1px solid rgba(42,136,64,.28);}
+.tv-feedback.ko{background:rgba(204,32,32,.14);color:#ff8080;border:1px solid rgba(204,32,32,.28);}
+.tv-next{background:var(--org);color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:10px 26px;border:none;border-radius:3px;cursor:pointer;transition:all .2s;display:none;}
+.tv-next.show{display:inline-block;}
+.tv-next:hover{background:#d05f0a;}
+.tv-result{display:none;text-align:center;padding:16px 0;}
+.tv-fin-score{font-family:'Fredoka One',cursive;font-size:3.2rem;color:var(--yel);margin-bottom:8px;}
+.tv-fin-title{font-family:'Fredoka One',cursive;font-size:1.6rem;color:var(--cre);margin-bottom:10px;}
+.tv-fin-msg{font-style:italic;color:var(--mu);margin-bottom:22px;line-height:1.6;max-width:480px;}
+.tv-restart{background:none;border:1px solid var(--bm);color:var(--yel);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;padding:10px 26px;cursor:pointer;transition:all .2s;border-radius:3px;}
+.tv-restart:hover{border-color:var(--yel);}
+.tv-pbar{height:4px;background:var(--bs);border-radius:2px;margin-bottom:22px;overflow:hidden;}
+.tv-pbar-fill{height:100%;background:linear-gradient(to right,var(--org),var(--yel));border-radius:2px;transition:width .4s ease;}
+
+/* QUIZ - heat level */
+.qprog{display:flex;gap:5px;margin-bottom:24px;}
+.qd{height:4px;flex:1;background:var(--bs);border-radius:2px;transition:background .3s;}
+.qd.done{background:var(--pnk);}.qd.act{background:var(--org);}
+.qtxt{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--cre);margin-bottom:17px;line-height:1.4;}
+.qnum{color:var(--org);}
+.qopts{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
+.qopt{background:var(--card);border:1px solid var(--bs);color:rgba(245,237,216,.77);
+  font-family:'Nunito',sans-serif;font-size:.88rem;padding:12px 18px;border-radius:3px;cursor:pointer;text-align:left;transition:all .2s;}
+.qopt:hover{border-color:var(--org);color:var(--cre);background:rgba(240,112,16,.07);}
+.qres{display:none;text-align:center;padding:14px 0;}
+.qr-e{font-size:3.6rem;margin-bottom:7px;display:block;}
+.qr-t{font-family:'Fredoka One',cursive;font-size:1.7rem;color:var(--cre);margin-bottom:9px;}
+.qr-r{font-style:italic;color:var(--mu);margin-bottom:20px;line-height:1.6;max-width:490px;}
+.qr-btn{background:none;border:1px solid var(--bm);color:var(--yel);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;padding:9px 24px;cursor:pointer;transition:all .2s;border-radius:3px;}
+.qr-btn:hover{border-color:var(--yel);}
+
+/* FOOTER */
+footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 28px;position:relative;z-index:1;}
+.ft{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+.fb-brand img{height:72px;width:72px;object-fit:cover;border-radius:50%;border:2px solid var(--org);margin-bottom:11px;}
+.fb-brand p{font-style:italic;font-size:.79rem;color:var(--dim);line-height:1.6;max-width:185px;}
+.fc h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--org);margin-bottom:13px;}
+.fc p,.fc a{font-size:.79rem;color:var(--dim);display:block;margin-bottom:5px;text-decoration:none;transition:color .2s;}
+.fc a:hover{color:var(--cre);}
+.fb-bot{max-width:1200px;margin:0 auto;border-top:1px solid var(--bs);padding-top:20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.fb-bot p{font-size:.7rem;color:var(--dim);}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  nav{padding:0 12px;}
+  .nlinks a{padding:5px 7px;font-size:.72rem;}
+  .hero-content{grid-template-columns:1fr;text-align:center;gap:24px;padding:44px 20px;}
+  .hero-right{display:none;}.hero-center{order:-1;}
+  .hero-left .hero-sub{max-width:100%;}
+  .hero-left .hero-btns{justify-content:center;}
+  .hero-logo{width:160px;height:160px;}
+  .sp-grid{grid-template-columns:1fr 1fr;}
+  .rg{grid-template-columns:1fr;}
+  .ri,.rf{padding:48px 22px;}
+  .ft{grid-template-columns:1fr 1fr;gap:22px;}
+  .sec,.ev-wrap{padding:56px 18px;}
+  .gc{padding:28px 20px;}
+  .fb,.ob,.mbody{padding:36px 18px;}
+  .ev-row{grid-template-columns:1fr;gap:6px;}
+  .about-grid{grid-template-columns:1fr;}
+  .ab-logo{width:160px;height:160px;margin:0 auto 24px;}
+  .about-values{grid-template-columns:1fr 1fr;}
+  .bio-inner{grid-template-columns:1fr;text-align:center;}
+  .bio-logo{margin:0 auto 24px;}
+}
+@media(max-width:600px){
+  .sp-grid,.about-values{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+  .ogrid{grid-template-columns:1fr 1fr;}
+  .ft{grid-template-columns:1fr;}
+  .mh h1{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nlogo" onclick="showPage('home')">
+    <img src="Milltown TMD Photos/LOGO.jpg" alt="Milltown Logo">
+    <div class="nlt"><span class="n1">Milltown</span><span class="n2">Tex Mex &amp; Grill</span></div>
+  </div>
+  <div class="nlinks">
+    <a href="#" id="nav-home" class="active" onclick="showPage('home');return false;">Home</a>
+    <a href="#" id="nav-menu"          onclick="showPage('menu');return false;">Menu</a>
+    <a href="#" id="nav-about"         onclick="showPage('about');return false;">About</a>
+    <a href="#" id="nav-reservations"  onclick="showPage('reservations');return false;">Book</a>
+    <a href="#" id="nav-order"         onclick="showPage('order');return false;">Order</a>
+    <a href="#" id="nav-fun"           onclick="showPage('fun');return false;">Play 🎡</a>
+    <a href="#" class="ncta"           onclick="showPage('order');return false;">Order Now</a>
+  </div>
+  <span class="social-label">Follow Us!</span>
+  <div class="social-bar">
+    <a href="https://www.instagram.com/milltown_texmex_grill/reels/" target="_blank" rel="noreferrer noopener" aria-label="Instagram">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M34 6H14a8 8 0 0 0-8 8v20a8 8 0 0 0 8 8h20a8 8 0 0 0 8-8V14a8 8 0 0 0-8-8Zm4 28a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v20Zm-12-20a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm8-6.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/MilltownTexMexGrill" target="_blank" rel="noreferrer noopener" aria-label="Facebook">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M29 16h4.5l.5-4.5H29v-3.5c0-1.1.4-1.5 1.5-1.5H34V4h-4c-4.4 0-7 2.6-7 7v4H18v4.5h5v17H29V20.5h4.5L34 16H29v0Z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@milltowntexmex_grill" target="_blank" rel="noreferrer noopener" aria-label="TikTok">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M33 12.5c-1.2 0-2.4-.2-3.5-.6v9.6a10.5 10.5 0 1 1-4.1-8.4v3.7a6.9 6.9 0 1 0 2.7 5.4V11.9c1.2.4 2.4.6 3.6.6 1.1 0 2.1-.2 3.1-.5v5.2a8.3 8.3 0 0 1-1.8.4Z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ════════════ HOME ════════════ -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <p class="ey ey-o">Est. Right Here in Milltown</p>
+        <h1 class="hero-hl"><span class="hl-o">Bold</span> Flavors.<br><span class="hl-y">Real</span> Roots.<br><span class="hl-p">No BS.</span></h1>
+        <div class="div-o"></div>
+        <p class="hero-sub">Part taqueria, part grill, part breakfast spot. All real. Generous portions of food that hits the mark — every single time.</p>
+        <div class="hero-btns">
+          <button class="btn btn-o" onclick="showPage('menu')">See the Menu</button>
+          <button class="btn btn-yl" onclick="showPage('reservations')">Book an Event</button>
+        </div>
+      </div>
+      <div class="hero-center"><img src="Milltown TMD Photos/LOGO.jpg" alt="Milltown Tex Mex &amp; Grill" class="hero-logo"></div>
+      <div class="hero-right">
+        <div class="hero-stat"><div class="hs-num" style="color:var(--yel)">$1</div><div class="hs-lbl">Tacos on Tuesdays</div></div>
+        <div class="hero-stat"><div class="hs-num" style="color:var(--pnk)">🍲</div><div class="hs-lbl">Pozolero Thursdays</div></div>
+        <div class="hero-stat"><div class="hs-num" style="color:var(--cyn)">🥘</div><div class="hs-lbl">Weekend Rancho Specials</div></div>
+        <p class="hero-sub">Real flavors, big portions, a menu that reflects how people actually eat. Come for tacos, stay for everything else.</p>
+        <div class="hero-btns"><button class="btn btn-pk" onclick="showPage('fun')">Play &amp; Win 🎡</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="tick-track">
+      <span class="ti">🌮 Taco Tuesday —  $1 Tacos: Al Pastor · Carnitas · Pollo · Chorizo</span><span class="tdot">✦</span>
+      <span class="ti">🍲 Jueves Pozolero — Pozole Verde, Blanco &amp; Rojo</span><span class="tdot">✦</span>
+      <span class="ti">🥘 Weekend Specials — Caldo de Gallina de Rancho · Mole de Gallina · Barbacoa de Res</span><span class="tdot">✦</span>
+      <span class="ti">🍳 Breakfast All Day, Every Day!</span><span class="tdot">✦</span>
+      <span class="ti">🌮 Taco Tuesday — $1 Tacos: Al Pastor · Carnitas · Pollo · Chorizo</span><span class="tdot">✦</span>
+      <span class="ti">🍲 Jueves Pozolero — Pozole Verde, Blanco &amp; Rojo</span><span class="tdot">✦</span>
+      <span class="ti">🥘 Weekend Specials — Caldo de Gallina de Rancho · Mole de Gallina · Barbacoa de Res</span><span class="tdot">✦</span>
+      <span class="ti">🍳 Breakfast All Day, Every Day!</span><span class="tdot">✦</span>
+    </div>
+  </div>
+
+  <!-- SPECIALS -->
+  <div class="sec">
+    <div class="sec-head">
+      <p class="ey ey-o">Rotating Weekly</p>
+      <h2 class="sec-h2">Weekly <span style="color:var(--org)">Specials</span></h2>
+      <div class="div-o"></div>
+    </div>
+    <div class="sp-grid">
+      <div class="sp-card">
+        <div class="sp-day" style="color:var(--pnk)">Every Tuesday</div>
+        <div class="sp-name">🌮 Taco Tuesday</div>
+        <div class="sp-desc">$1 tacos all day on these classic proteins — Take your $20 taco box to share with la familia!</div>
+        <div class="sp-items">
+          <span class="sp-item">✦ Al Pastor</span><span class="sp-item">✦ Carnitas</span>
+          <span class="sp-item">✦ Pollo</span><span class="sp-item">✦ Chorizo</span>
+        </div>
+        <div class="sp-badge" style="background:rgba(232,24,106,.14);color:var(--pnk);border:1px solid rgba(232,24,106,.3);">$1 Each</div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-day" style="color:var(--org)">Every Thursday</div>
+        <div class="sp-name">🍲 Jueves Pozolero</div>
+        <div class="sp-desc">Thursdays are dedicated to our rich, slow-cooked pozole — choose your color.</div>
+        <div class="sp-items">
+          <span class="sp-item">✦ Pozole Verde</span><span class="sp-item">✦ Pozole Blanco</span>
+          <span class="sp-item">✦ Pozole Rojo</span>
+        </div>
+        <div class="sp-badge" style="background:rgba(240,112,16,.14);color:var(--org);border:1px solid rgba(240,112,16,.3);">Thurs Only</div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-day" style="color:var(--yel)">Weekends</div>
+        <div class="sp-name">🥘 Rancho Weekend</div>
+        <div class="sp-desc">Saturdays &amp; Sundays we bring out the Rancho-style dishes you can't get on weekdays.</div>
+        <div class="sp-items">
+          <span class="sp-item">✦ Caldo de Gallina de Rancho</span>
+          <span class="sp-item">✦ Mole de Gallina de Rancho</span>
+          <span class="sp-item">✦ Barbacoa de Res</span>
+          <span class="sp-item">✦ Chuletas en Adobo</span>
+          <span class="sp-item">✦ Tortas de Camarón</span>
+        </div>
+        <div class="sp-badge" style="background:rgba(240,192,32,.14);color:var(--yel);border:1px solid rgba(240,192,32,.3);">Sat &amp; Sun</div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-day" style="color:var(--cyn)">Every Day</div>
+        <div class="sp-name">🍳 Breakfast All Day</div>
+        <div class="sp-desc">Don't look at the clock. We serve the full breakfast menu from open to close, any day.</div>
+        <div class="sp-items">
+          <span class="sp-item">✦ Chilaquiles, Huevos, Omelets</span>
+          <span class="sp-item">✦ Pancakes &amp; French Toast</span>
+          <span class="sp-item">✦ Breakfast Burritos &amp; Tacos</span>
+        </div>
+        <div class="sp-badge" style="background:rgba(24,180,216,.14);color:var(--cyn);border:1px solid rgba(24,180,216,.3);">All Day</div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-day" style="color:var(--grn)">House Specialty</div>
+        <div class="sp-name">🔥 Birria House</div>
+        <div class="sp-desc">Our slow-braised birria is a labor of love. Tacos, quesabirria, burritos, or... Ramen? — your call.</div>
+        <div class="sp-items">
+          <span class="sp-item">✦ Birria Tacos (3) — $15.95</span>
+          <span class="sp-item">✦ Quesabirria — $18.95</span>
+          <span class="sp-item">✦ Ramen Birria — $13.95</span>
+        </div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-day" style="color:var(--red)">Fan Favorites</div>
+        <div class="sp-name">🏆 Must-Try Plates</div>
+        <div class="sp-desc">These are the dishes regulars keep coming back for, week after week.</div>
+        <div class="sp-items">
+          <span class="sp-item">✦ Molcajete de Mariscos</span>
+          <span class="sp-item">✦ Machete Gigante</span>
+          <span class="sp-item">✦ El Patrón (Steak &amp; Shrimp)</span>
+          <span class="sp-item">✦ Parrillada de la Casa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVENTS -->
+  <div class="ev-wrap">
+    <div class="ev-inner">
+      <p class="ey ey-y">Calendar</p>
+      <h2 class="sec-h2">What's <span style="color:var(--yel)">Happening</span></h2>
+      <div style="width:50px;height:3px;border-radius:2px;background:var(--yel);margin:12px 0 0;"></div>
+      <div class="ev-list">
+        <div class="ev-row"><div class="ev-when" style="color:var(--pnk)">Tuesday<small>All Day</small></div><div><div class="ev-name">Taco Tuesday — $1 Tacos</div><div class="ev-det">Al Pastor, Carnitas, Pollo, Chorizo. No limit. Show up hungry.</div></div><span class="badge b-p">$1 Each</span></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--org)">Thursday<small>All Day</small></div><div><div class="ev-name">Jueves Pozolero</div><div class="ev-det">Full pozole menu — Verde, Blanco, and Rojo. Rich broth, big bowls.</div></div><span class="badge b-o">Thurs Only</span></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--yel)">Saturday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Begins</div><div class="ev-det">Caldo de Gallina de Rancho, Mole de Gallina, Barbacoa de Res, Chuletas en Adobo, Tortas de Camarón.</div></div><span class="badge b-y">Weekend</span></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--grn)">Sunday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Continues</div><div class="ev-det">All weekend specials available. Plus our full Sunday breakfast menu from open.</div></div><span class="badge b-g">Weekend</span></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--cyn)">May 5th<small>Open to Close</small></div><div><div class="ev-name">Cinco De Mayo!</div><div class="ev-det">Come see what we have in store for you!</div></div><span class="badge b-c">May 5 Only</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIO SNIPPET -->
+  <div class="bio-wrap">
+    <div class="bio-inner">
+      <img src="Milltown TMD Photos/LOGO.jpg" alt="Milltown Logo" class="bio-logo">
+      <div class="bio-text">
+        <p class="ey ey-o" style="margin-bottom:6px;">Our Story</p>
+        <div class="bio-title">Milltown <span>Tex Mex</span> &amp; Grill</div>
+        <div class="bio-sub" style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--yel);margin-bottom:16px;">A Neighborhood Spot with Real Roots</div>
+        <p>Milltown Tex Mex Deli isn't trying to be fancy — it's trying to be real. Built around the kind of food that speaks for itself, pulling from traditional Mexican cooking, family-style recipes, and the meals you grow up with.</p>
+        <p>This isn't a trimmed-down menu designed for trends. It's big, a little chaotic, and full of options because it reflects how people actually eat.</p>
+        <button class="btn btn-o" onclick="showPage('about')" style="margin-top:8px;">Read Our Full Story</button>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <footer>
+    <div class="ft">
+      <div class="fb-brand"><img src="Milltown TMD Photos/LOGO.jpg" alt="Milltown Logo"><p>Bold flavors, real community, cold drinks. Come hungry. Leave happy.</p></div>
+      <div class="fc"><h4>Hours</h4><p>Mon–Wed: 9AM – 8PM</p><p>Thu–Sat: 9AM – 10PM</p><p>Sunday: 9AM – 7PM</p></div>
+      <div class="fc"><h4>Visit Us</h4><p>123 Main St, Milltown</p><p>(732) 317-4464</p><a href="#">hello@milltowntexmex.com</a></div>
+      <div class="fc"><h4>Follow</h4><a href="https://www.instagram.com/milltown_texmex_grill/reels/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://www.facebook.com/MilltownTexMexGrill" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://www.tiktok.com/@milltowntexmex_grill" target="_blank" rel="noreferrer noopener">TikTok</a></div>
+    </div>
+    <div class="fb-bot"><p>© 2025 Milltown Tex Mex &amp; Grill. All rights reserved.</p><p>Made with 🌶️ in Milltown</p></div>
+  </footer>
+</div>
+
+<!-- ════════════ MENU ════════════ -->
+<div id="page-menu" class="page">
+  <div class="mh">
+    <p class="ey ey-o" style="margin-bottom:7px;">Everything Made Fresh</p>
+    <h1>Our <span>Menu</span></h1>
+    <p>Tap any item to see the full description.</p>
+    <div class="bfast-banner"><span>🍳 Breakfast Served All Day, Every Day!</span></div>
+  </div>
+  <div class="mtabs" id="mtabs">
+    <button class="mtab active" onclick="showMS('appetizers',this)">Starters</button>
+    <button class="mtab" onclick="showMS('tacos',this)">Tacos</button>
+    <button class="mtab" onclick="showMS('birria',this)">Birria</button>
+    <button class="mtab" onclick="showMS('burritos',this)">Burritos</button>
+    <button class="mtab" onclick="showMS('mains',this)">Mains</button>
+    <button class="mtab" onclick="showMS('fajitas',this)">Fajitas</button>
+    <button class="mtab" onclick="showMS('seafood',this)">Seafood</button>
+    <button class="mtab" onclick="showMS('antojitos',this)">Antojitos</button>
+    <button class="mtab" onclick="showMS('tortas',this)">Tortas</button>
+    <button class="mtab" onclick="showMS('burgers',this)">Burgers</button>
+    <button class="mtab" onclick="showMS('breakfast',this)">Breakfast</button>
+    <button class="mtab" onclick="showMS('soups',this)">Soups</button>
+    <button class="mtab" onclick="showMS('salads',this)">Salads</button>
+    <button class="mtab" onclick="showMS('kids',this)">Kids</button>
+    <button class="mtab" onclick="showMS('desserts',this)">Desserts</button>
+    <button class="mtab" onclick="showMS('drinks',this)">Drinks</button>
+  </div>
+  <div class="mbody">
+
+    <!-- APPETIZERS -->
+    <div class="msec active" id="ms-appetizers">
+      <div class="ms-h"><h2>Starters &amp; Botanas</h2><p>The best way to kick things off.</p></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/10. MEXICAN SAMPLER.jpg" class="mc-img" alt="Mexican Sampler">
+          <div class="mc-top"><span class="mc-name">Mexican Sampler</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">A generous mix of flautas, quesadillas, sopes, and house appetizers. Perfect for sharing and trying a little bit of everything.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Chips &amp; Dipping</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Veg</span></div>
+          <div class="mc-body"><div class="mc-desc">Fresh tortilla chips served with your choice of salsa, guacamole, or queso dip.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Nachos Texanos</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span><span class="mtag t-hot">🌶 Spicy Option</span></div>
+          <div class="mc-body"><div class="mc-desc">Tortilla chips loaded with steak, melted cheese, beans, fresh pico de gallo, and crema. A full plate of flavor.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Quesadilla de Maíz</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Veg Option</span></div>
+          <div class="mc-body"><div class="mc-desc">Corn tortilla quesadilla with melted cheese and choice of meat. Crispy outside, melty inside.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Tex Mex Fries</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Fries loaded with cheese sauce, choice of meat, and all the Tex-Mex toppings you could want.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Wings (8)</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Eight crispy wings with your choice of sauce. Ask your server about today's sauce selection.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Chicken Fingers (5)</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Five golden-breaded chicken fingers served with fries and your choice of dipping sauce.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Milltown Combo Platter</span><div class="mc-right"><span class="mc-price">$18.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Best for Groups</span></div>
+          <div class="mc-body"><div class="mc-desc">Our largest sampler — a big spread of house favorites to share with the table. The ultimate starter.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Las Chakalosas</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-hot">🌶 Spicy</span></div>
+          <div class="mc-body"><div class="mc-desc">A loaded specialty snack featuring chips, seasoned meat, melted cheese, and house sauces. Dangerously addictive.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Mozzarella Sticks</span><div class="mc-right"><span class="mc-price">$10.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Classic fried mozzarella sticks served golden and crispy with marinara dipping sauce.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TACOS -->
+    <div class="msec" id="ms-tacos">
+      <div class="ms-h"><h2>Tacos</h2><p>Street tacos and specialty plates. Corn or flour tortillas.</p></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;">
+        <div><img src="Milltown TMD Photos/20. BIRRIA TACOS.jpg" style="width:100%;border-radius:4px;border:1px solid var(--bs);" alt="Birria Tacos"></div>
+        <div><img src="Milltown TMD Photos/25. VEGGIE TACOS.jpg" style="width:100%;border-radius:4px;border:1px solid var(--bs);" alt="Veggie Tacos"></div>
+      </div>
+      <p class="sub-head">Standard Street Tacos</p>
+      <div class="taco-list">
+        <div class="tl-item"><span class="mc-name">Al Pastor</span><span class="mc-price">$4.00</span></div>
+        <div class="tl-item"><span class="mc-name">Carne Asada</span><span class="mc-price">$4.00</span></div>
+        <div class="tl-item"><span class="mc-name">Pollo</span><span class="mc-price">$4.00</span></div>
+        <div class="tl-item"><span class="mc-name">Chorizo</span><span class="mc-price">$4.00</span></div>
+        <div class="tl-item"><span class="mc-name">Barbacoa</span><span class="mc-price">$5.00</span></div>
+        <div class="tl-item"><span class="mc-name">Carnitas Mixtas</span><span class="mc-price">$5.00</span></div>
+      </div>
+      <p class="sub-head">Premium Meats</p>
+      <div class="taco-list">
+        <div class="tl-item"><span class="mc-name">Lengua</span><span class="mc-price">$6.00</span></div>
+        <div class="tl-item"><span class="mc-name">Tripa</span><span class="mc-price">$6.00</span></div>
+        <div class="tl-item"><span class="mc-name">Cabeza</span><span class="mc-price">$6.00</span></div>
+      </div>
+      <p class="sub-head">Specialty Tacos</p>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Shrimp Tacos (3)</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div>
+          <div class="mc-body"><div class="mc-desc">Three tacos loaded with seasoned Gulf shrimp, fresh toppings, and house salsa.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Fish Tacos (3)</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div>
+          <div class="mc-body"><div class="mc-desc">Three Baja-style fish tacos with fresh slaw, salsa, and crema.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/25. VEGGIE TACOS.jpg" class="mc-img" alt="Veggie Tacos">
+          <div class="mc-top"><span class="mc-name">Veggie Tacos (3)</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Vegan</span></div>
+          <div class="mc-body"><div class="mc-desc">Three tacos with seasoned rice, black beans, fresh pico, avocado, and cilantro. Full flavor, no meat.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Arabes Taco</span><div class="mc-right"><span class="mc-price">$6.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Middle-Eastern inspired taco with marinated pork, chipotle, and flour tortilla. A unique fusion classic.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Alambre Taco</span><div class="mc-right"><span class="mc-price">$6.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Taco filled with grilled mixed meats, peppers, onions, bacon, and melted cheese.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Taco Platter (3)</span><div class="mc-right"><span class="mc-price">$16.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Three tacos of your choice served as a full plate with rice, beans, and garnishes.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Tacos Ensenada (3)</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div>
+          <div class="mc-body"><div class="mc-desc">Three Ensenada-style tacos featuring our house-battered fish, fresh cabbage slaw, and chipotle crema.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIRRIA -->
+    <div class="msec" id="ms-birria">
+      <div class="ms-h"><h2>Birria House 🔥</h2><p>Slow-braised beef, rich consommé, Oaxacan cheese.</p></div>
+      <div style="margin-bottom:24px;"><img src="Milltown TMD Photos/20. BIRRIA TACOS.jpg" style="width:100%;max-height:280px;object-fit:cover;border-radius:4px;border:1px solid var(--bs);" alt="Birria Tacos"></div>
+      <div style="margin-bottom:24px;"><img src="Milltown TMD Photos/19. BIRRIA QUESADILLA.jpg" style="width:100%;max-height:280px;object-fit:cover;border-radius:4px;border:1px solid var(--bs);" alt="Birria Quesadilla"></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/20. BIRRIA TACOS.jpg" class="mc-img" alt="Birria Tacos">
+          <div class="mc-top"><span class="mc-name">Birria Tacos (3)</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ #1 Seller</span></div>
+          <div class="mc-body"><div class="mc-desc">Three red-stained corn tortillas filled with slow-braised beef birria and Oaxacan cheese. Served with consommé for dipping, salsa verde, and fresh lime.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/19. BIRRIA QUESADILLA.jpg" class="mc-img" alt="Birria Quesadilla">
+          <div class="mc-top"><span class="mc-name">Quesabirria</span><div class="mc-right"><span class="mc-price">$18.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Crispy birria quesadilla cut into four pieces, served with consommé, red and green salsa, and fresh lime wedges. The ultimate dip experience.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Birria Burrito</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">All the birria flavor packed into a large flour tortilla. Topped with lettuce, crema, cotija, and served with consommé on the side.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Torta de Birria</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Slow-braised birria on a toasted bolillo roll with beans, avocado, lettuce, tomato, and consommé for dipping.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Ramen Birria</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sp">🔥 Unique</span></div>
+          <div class="mc-body"><div class="mc-desc">Ramen noodles in rich birria consommé broth, topped with slow-braised birria beef, cilantro, onion, and lime. A one-of-a-kind fusion bowl.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BURRITOS -->
+    <div class="msec" id="ms-burritos">
+      <div class="ms-h"><h2>Burritos &amp; Bowls</h2><p>Big, stuffed, and made to order.</p></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+        <img src="Milltown TMD Photos/15. BURRITO.jpg" style="width:100%;border-radius:4px;border:1px solid var(--bs);" alt="Burrito">
+        <img src="Milltown TMD Photos/17. BURRITO BOWL.jpg" style="width:100%;border-radius:4px;border:1px solid var(--bs);" alt="Burrito Bowl">
+        <img src="Milltown TMD Photos/16. BURRITO BOWL SHELL.jpg" style="width:100%;border-radius:4px;border:1px solid var(--bs);" alt="Burrito Bowl Shell">
+      </div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/15. BURRITO.jpg" class="mc-img" alt="Burrito">
+          <div class="mc-top"><span class="mc-name">Chicken Burrito</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Large flour tortilla filled with grilled chicken, rice, beans, lettuce, pico, crema, and cotija cheese.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/15. BURRITO.jpg" class="mc-img" alt="Steak Burrito">
+          <div class="mc-top"><span class="mc-name">Steak Burrito</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Grilled steak, rice, beans, lettuce, crema, and pico wrapped in a large flour tortilla with cotija on top.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Texano Burrito</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Texas-style burrito stuffed with rice, beans, choice of meat, crema, and fresh pico de gallo.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">California Burrito</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Steak, French fries, melted cheese, and fresh pico de gallo wrapped in a large flour tortilla. West Coast classic done right.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Burrito Ahogado</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-hot">🌶 Spicy Option</span></div>
+          <div class="mc-body"><div class="mc-desc">Burrito "drowned" in house red or green sauce and smothered in melted cheese. Fork required.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Burrito Bandera</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sp">🇲🇽 Signature</span></div>
+          <div class="mc-body"><div class="mc-desc">Covered in three sauces representing the Mexican flag: green tomatillo, white crema, and red chile. A beautiful and delicious creation.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/17. BURRITO BOWL.jpg" class="mc-img" alt="Burrito Bowl">
+          <div class="mc-top"><span class="mc-name">Burrito Bowl</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Veg Option</span></div>
+          <div class="mc-body"><div class="mc-desc">Rice, beans, choice of protein, crema, cotija, and all the toppings in a bowl. Light on carbs, heavy on flavor.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/16. BURRITO BOWL SHELL.jpg" class="mc-img" alt="Taco Shell Bowl">
+          <div class="mc-top"><span class="mc-name">Taco Shell Bowl</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Fan Favorite</span></div>
+          <div class="mc-body"><div class="mc-desc">All your burrito bowl ingredients served inside a giant crispy fried tortilla shell. Eat the bowl when you're done with the filling.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Veggie Burrito</span><div class="mc-right"><span class="mc-price">$11.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Vegan</span></div>
+          <div class="mc-body"><div class="mc-desc">Seasoned vegetables, rice, black beans, guacamole, and fresh salsa wrapped in a warm flour tortilla.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAINS -->
+    <div class="msec" id="ms-mains">
+      <div class="ms-h"><h2>Main Dishes / Platillos</h2><p>All served with rice, beans, and tortillas.</p></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/28. MOLE OAXAQUENO.jpg" class="mc-img" alt="Mole Oaxaqueño">
+          <div class="mc-top"><span class="mc-name">Mole Oaxaqueño de Pollo</span><div class="mc-right"><span class="mc-price">$16.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sp">🏆 House Specialty</span></div>
+          <div class="mc-body"><div class="mc-desc">Bone-in chicken pieces covered in our rich, deeply complex Oaxacan black mole. This sauce takes days to prepare. Served with rice, beans, and tortillas.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/26. ENCHILADAS DE MOLE.jpg" class="mc-img" alt="Enchiladas de Mole">
+          <div class="mc-top"><span class="mc-name">Enchiladas de Mole (5)</span><div class="mc-right"><span class="mc-price">$16.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Five corn tortillas stuffed with chicken and drenched in house mole negro, topped with cotija, crema, and pickled red onion. Garnished with fresh avocado.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/29. GIANT MACHETE.jpg" class="mc-img" alt="Machete Gigante">
+          <div class="mc-top"><span class="mc-name">Machete Gigante</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Must Try</span></div>
+          <div class="mc-body"><div class="mc-desc">A massive folded crispy corn masa "machete" filled with your choice of meat, topped with crema, cotija, avocado, lettuce, and house salsa. Enormous and incredible.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/34. EL PATRON.jpg" class="mc-img" alt="El Patron">
+          <div class="mc-top"><span class="mc-name">El Patrón</span><div class="mc-right"><span class="mc-price">Market</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Signature</span></div>
+          <div class="mc-body"><div class="mc-desc">Grilled ribeye steak alongside seasoned Gulf shrimp, served with rice, grilled nopales, salsa, and all the fixin's. The boss of the menu.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/33. PARRILLADA DE LA CASA.jpg" class="mc-img" alt="Parrillada de la Casa">
+          <div class="mc-top"><span class="mc-name">Parrillada de la Casa</span><div class="mc-right"><span class="mc-price">Market</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Great for Sharing</span></div>
+          <div class="mc-body"><div class="mc-desc">A mixed grill feast: carne asada, chicken, chorizo, panela cheese, and roasted onions. Served with guacamole, pico, grilled jalapeños, and tortillas. Perfect for the table.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/24. tlayua oaxaquena.jpg" class="mc-img" alt="Tlayuda Oaxaqueña">
+          <div class="mc-top"><span class="mc-name">Tlayuda Oaxaqueña</span><div class="mc-right"><span class="mc-price">$16.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sp">🏆 Oaxacan Classic</span></div>
+          <div class="mc-body"><div class="mc-desc">A giant crispy corn tortilla base layered with asiento (unrefined lard), black beans, Oaxacan string cheese, and choice of meat. Decorated with avocado, jalapeños, and pickled carrots.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/30. POBLANO PEPPER.jpg" class="mc-img" alt="Chile Relleno">
+          <div class="mc-top"><span class="mc-name">Chile Relleno (Poblano Pepper)</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Veg Option</span></div>
+          <div class="mc-body"><div class="mc-desc">Roasted poblano pepper stuffed with cheese (or meat), smothered in a rich tomato-chipotle sauce, drizzled with crema and cotija. Served with rice and beans.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Bistec Asado</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Grilled beef steak served with rice, beans, tortillas, and your choice of salsa. Simple and satisfying.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Alambre Texano</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Mixed meats (steak, chicken, chorizo, bacon) grilled with bell peppers, onions, and melted cheese. Served with rice, beans, and tortillas.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/27. MIX PINCHOS.jpg" class="mc-img" alt="Mix Pinchos">
+          <div class="mc-top"><span class="mc-name">Mix Pinchos</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Grilled skewers of chicken and beef with bell peppers and onions, served over rice and beans with queso fresco.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Cecina Ranchera</span><div class="mc-right"><span class="mc-price">$18.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sp">🏆 House Specialty</span></div>
+          <div class="mc-body"><div class="mc-desc">Thinly sliced, salted and air-dried beef, grilled to perfection. A true Oaxacan specialty served with rice, beans, guacamole, and tortillas.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Enchiladas Suizas (5)</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Five corn tortilla enchiladas filled with chicken, covered in creamy tomatillo salsa, melted Swiss-style cheese, and crema.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAJITAS -->
+    <div class="msec" id="ms-fajitas">
+      <div class="ms-h"><h2>Fajitas 🔥</h2><p>Served sizzling hot with rice, beans, and tortillas.</p></div>
+      <div style="margin-bottom:20px;"><img src="Milltown TMD Photos/21. MEXICAN FAJITA.jpg" style="width:100%;max-height:260px;object-fit:cover;border-radius:4px;border:1px solid var(--bs);" alt="Mexican Fajita"></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Chicken Fajita</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Marinated grilled chicken with sautéed peppers and onions, served sizzling with rice, beans, and warm tortillas.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Steak Fajita</span><div class="mc-right"><span class="mc-price">$16.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Grilled skirt steak strips with peppers and onions. The sizzle is part of the experience.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/21. MEXICAN FAJITA.jpg" class="mc-img" alt="Mexican Fajita">
+          <div class="mc-top"><span class="mc-name">Mexican Fajita</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sp">🏆 Signature</span></div>
+          <div class="mc-body"><div class="mc-desc">Mixed meats with grilled nopales, peppers, onions, panela cheese, and chorizo on a cast iron skillet. The full Mexican flavor profile in one dish.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Veggie Fajita</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Vegan Option</span></div>
+          <div class="mc-body"><div class="mc-desc">Sautéed bell peppers, onions, mushrooms, zucchini, and nopales served sizzling with rice, beans, and tortillas.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Fajita Trio</span><div class="mc-right"><span class="mc-price">$18.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Great for Sharing</span></div>
+          <div class="mc-body"><div class="mc-desc">Chicken, steak, and shrimp all on one sizzling platter with peppers, onions, rice, beans, guacamole, and tortillas.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Surf &amp; Turf Fajita</span><div class="mc-right"><span class="mc-price">$18.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div>
+          <div class="mc-body"><div class="mc-desc">Steak and shrimp sizzling together on one iron skillet with peppers and onions. The best of land and sea.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEAFOOD -->
+    <div class="msec" id="ms-seafood">
+      <div class="ms-h"><h2>Seafood / Mariscos 🦐</h2><p>Gulf fresh and full of flavor.</p></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/23. MOLCAJETE DE MARISCOS.jpg" class="mc-img" alt="Molcajete de Mariscos">
+          <div class="mc-top"><span class="mc-name">Molcajete de Mariscos</span><div class="mc-right"><span class="mc-price">Market</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Showstopper</span><span class="mtag t-sea">🌊 Seafood</span></div>
+          <div class="mc-body"><div class="mc-desc">A volcanic stone molcajete overflowing with crab claws, shrimp, octopus, calamari, mussels, and fried fish, served in a spicy house broth. The most dramatic dish on the menu.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/32. MOLCAJETE COSTENO.jpg" class="mc-img" alt="Molcajete Costeño">
+          <div class="mc-top"><span class="mc-name">Molcajete Costeño</span><div class="mc-right"><span class="mc-price">Market</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Stone molcajete with marinated shrimp skewer, chicken, chorizo, nopales, onion, avocado, and panela cheese in a rich coastal sauce.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/31. SEAFOOD SOUP.jpg" class="mc-img" alt="Seafood Soup">
+          <div class="mc-top"><span class="mc-name">Seafood Soup / 7 Mares</span><div class="mc-right"><span class="mc-price">$22.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span><span class="mtag t-pop">⭐ Weekend Favorite</span></div>
+          <div class="mc-body"><div class="mc-desc">Rich red broth soup packed with whole fish, crab, jumbo shrimp, clams, mussels, and octopus. Served with cilantro, onion, and fresh lime. A whole meal in a bowl.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/22. MOJARRA FRITA.jpg" class="mc-img" alt="Mojarra Frita">
+          <div class="mc-top"><span class="mc-name">Mojarra Frita</span><div class="mc-right"><span class="mc-price">$22.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div>
+          <div class="mc-body"><div class="mc-desc">Whole fried tilapia seasoned with house spices, served golden crispy with rice, black beans, fresh salad, sliced citrus, and lime. Pick garlic, spicy, or classic style.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Camarones al Gusto</span><div class="mc-right"><span class="mc-price">$18.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div>
+          <div class="mc-body"><div class="mc-desc">Shrimp cooked your way — garlic, mojo, ranchero, chipotle, or diabla. Served with rice and choice of sides.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Camarones al Tequila</span><div class="mc-right"><span class="mc-price">$18.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span><span class="mtag t-sp">🔥 Unique</span></div>
+          <div class="mc-body"><div class="mc-desc">Gulf shrimp flambéed in tequila with butter, garlic, and fresh herbs. Rich, bold, and unforgettable.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Shrimp Cocktail</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div>
+          <div class="mc-body"><div class="mc-desc">Chilled shrimp in house cocktail sauce with fresh tomato, onion, cilantro, avocado, and lime. Refreshing and flavorful.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Ceviche (Fish or Mixed)</span><div class="mc-right"><span class="mc-price">$17–$22</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span><span class="mtag t-veg">Fresh</span></div>
+          <div class="mc-body"><div class="mc-desc">Fresh fish or mixed seafood marinated in lime juice with tomato, onion, cucumber, cilantro, and avocado. Served with tostadas.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANTOJITOS -->
+    <div class="msec" id="ms-antojitos">
+      <div class="ms-h"><h2>Antojitos Mexicanos</h2><p>Street food classics, done right.</p></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;">
+        <img src="Milltown TMD Photos/11. SOPES.jpg" style="width:100%;border-radius:4px;border:1px solid var(--bs);" alt="Sopes">
+        <img src="Milltown TMD Photos/12. GORDITA.jpg" style="width:100%;border-radius:4px;border:1px solid var(--bs);" alt="Gordita">
+        <img src="Milltown TMD Photos/13. PANBASO.jpg" style="width:100%;border-radius:4px;border:1px solid var(--bs);" alt="Pambazo">
+      </div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/11. SOPES.jpg" class="mc-img" alt="Sopes">
+          <div class="mc-top"><span class="mc-name">Sopes (3)</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Three thick fried masa discs topped with beans, choice of meat, crema, cotija, lettuce, and fresh avocado slices.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/12. GORDITA.jpg" class="mc-img" alt="Gordita">
+          <div class="mc-top"><span class="mc-name">Gordita</span><div class="mc-right"><span class="mc-price">$8.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Thick fried corn masa pocket stuffed with choice of meat, lettuce, crema, and cotija. Crispy shell, soft inside, stuffed with flavor.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/13. PANBASO.jpg" class="mc-img" alt="Pambazo">
+          <div class="mc-top"><span class="mc-name">Pambazo</span><div class="mc-right"><span class="mc-price">$11.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sp">🏆 Mexican Classic</span></div>
+          <div class="mc-body"><div class="mc-desc">A white bread roll dipped in guajillo chile sauce and fried until crispy. Stuffed with potatoes, chorizo, lettuce, crema, and cotija. A Mexico City street food staple.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Flautas (4)</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Four crispy rolled tacos filled with chicken or beef, served with guacamole, crema, cotija, and shredded lettuce.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Tostadas (3)</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Three crispy tostadas topped with beans, choice of meat or seafood, shredded lettuce, crema, and cotija.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Chalupas (3)</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Small crispy corn masa boats with beans, salsa roja, choice of meat, onion, and cotija.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Empanadas</span><div class="mc-right"><span class="mc-price">$3.50</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Stuffed and fried corn masa pastries with your choice of filling. Great as a snack or side.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Picaditas (3)</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Three thick pinched masa rounds topped with salsa, beans, cheese, and choice of protein. A Veracruz classic.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TORTAS -->
+    <div class="msec" id="ms-tortas">
+      <div class="ms-h"><h2>Tortas &amp; Cemitas Gigantes</h2><p>Mexican sandwiches — massive and loaded. All include beans, avocado, lettuce, tomato, mayo &amp; jalapeño.</p></div>
+      <p class="sub-head">Tortas</p>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Torta Al Pastor</span><div class="mc-right"><span class="mc-price">$11.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Toasted telera roll with marinated al pastor pork, beans, avocado, lettuce, tomato, mayo, and jalapeño.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Torta de Chorizo</span><div class="mc-right"><span class="mc-price">$11.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Spicy Mexican chorizo on a toasted roll with all the classic torta toppings.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Torta Cubana</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div><div class="mc-body"><div class="mc-desc">The ultimate loaded torta — milanesa, hot dog, ham, cheese, and all the toppings. Enormous and satisfying.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Torta Chilanga</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Mexico City-style torta with a mix of proteins, chipotle, and all the classic fixings.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Torta Milanesa</span><div class="mc-right"><span class="mc-price">$11.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Breaded chicken or beef milanesa on a toasted roll with all the torta classics. Choice of chicken or beef.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Torta Rusa</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">A unique style torta with an unexpected twist on toppings and flavors. Ask your server about today's version.</div></div></div>
+      </div>
+      <p class="sub-head" style="margin-top:24px;">Cemitas Gigantes</p>
+      <p style="font-size:.82rem;color:var(--mu);font-style:italic;margin-bottom:14px;">All cemitas include quesillo (Oaxacan string cheese), avocado, chipotle, and papalo herb.</p>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Cemita Al Pastor</span><div class="mc-right"><span class="mc-price">$16.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-sp">Oaxacan Style</span></div><div class="mc-body"><div class="mc-desc">Sesame roll loaded with al pastor, quesillo, avocado, chipotle, and the aromatic papalo herb.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Cemita Carnitas Mixtas</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Mixed slow-cooked pork carnitas packed into a giant sesame roll with quesillo, avocado, chipotle, and papalo.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Cemita Cubana</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div><div class="mc-body"><div class="mc-desc">The big one — loaded cemita with multiple meats, quesillo, avocado, chipotle, and papalo. Comes with a fork just in case.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Cemita Milanesa</span><div class="mc-right"><span class="mc-price">$16.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Crispy breaded milanesa on a giant sesame roll with quesillo, chipotle, avocado, and fresh papalo.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Cemita Campechana</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">A mixed-meat cemita with beef and chorizo, quesillo, avocado, chipotle, and papalo. Bold and filling.</div></div></div>
+      </div>
+    </div>
+
+    <!-- BURGERS -->
+    <div class="msec" id="ms-burgers">
+      <div class="ms-h"><h2>Burger Bar 🍔</h2><p>All served with fries.</p></div>
+      <div style="margin-bottom:20px;"><img src="Milltown TMD Photos/18. mexican hamburger.jpg" style="width:100%;max-height:260px;object-fit:cover;border-radius:4px;border:1px solid var(--bs);" alt="Mexican Burger"></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/18. mexican hamburger.jpg" class="mc-img" alt="Mexican Burger">
+          <div class="mc-top"><span class="mc-name">Mexican Burger</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Beef patty on a toasted bun with homemade guacamole, jalapeño, melted cheese, lettuce, and tomato. A Mexican flag toothpick included. Served with fries.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Classic Burger</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">A simple, well-executed beef burger with lettuce, tomato, onion, pickles, and American cheese. Classic done right.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Cowboy Burger</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Beef patty with BBQ sauce, bacon, cheddar, onion rings, and pickles. Texas-sized flavor.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Spicy "Diabla" Burger</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-hot">🌶🌶 Very Hot</span></div><div class="mc-body"><div class="mc-desc">For heat seekers only. Beef patty loaded with jalapeños, habanero sauce, pepper jack cheese, and house diabla salsa.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Hawaiian Burger</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Beef patty with grilled pineapple, teriyaki glaze, Swiss cheese, and fresh lettuce and tomato.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Swiss Burger</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Classic burger with melted Swiss cheese, sautéed mushrooms, and caramelized onions.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Turkey Burger</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Ground turkey patty with lettuce, tomato, avocado, and a light house aioli. A lighter option.</div></div></div>
+      </div>
+    </div>
+
+    <!-- BREAKFAST -->
+    <div class="msec" id="ms-breakfast">
+      <div class="ms-h">
+        <h2>Breakfast 🍳</h2>
+        <p>Served ALL DAY, every day. Because hunger doesn't follow a schedule.</p>
+        <div class="bfast-banner" style="margin-top:12px;display:inline-flex;align-items:center;gap:10px;background:rgba(240,112,16,.15);border:1px solid rgba(240,112,16,.35);padding:8px 20px;border-radius:3px;">
+          <img src="Milltown TMD Photos/BREAKFAST ALL DAY.jpg" style="height:36px;border-radius:3px;" alt="Breakfast All Day">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--org);">Breakfast All Day!!!</span>
+        </div>
+      </div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/1. CHILAQUILES.jpg" class="mc-img" alt="Chilaquiles Oaxaqueños">
+          <div class="mc-top"><span class="mc-name">Chilaquiles Oaxaqueños</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ House Favorite</span></div>
+          <div class="mc-body"><div class="mc-desc">Crispy tortilla chips simmered in red mole sauce, topped with cotija, crema, red onion, avocado, cilantro, two fried eggs, and a side of carne asada. The Oaxacan way to start the day.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/2. HUVOS RANCHEROS.jpg" class="mc-img" alt="Huevos Rancheros">
+          <div class="mc-top"><span class="mc-name">Huevos Rancheros</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Classic</span></div>
+          <div class="mc-body"><div class="mc-desc">Eggs served ranch-style on corn tortillas smothered in ranchero sauce and crema, with a side of Mexican rice, black beans, and fresh avocado.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/4. FRENCH TOAST W EGGS.jpg" class="mc-img" alt="French Toast with Eggs">
+          <div class="mc-top"><span class="mc-name">French Toast W. Eggs</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Golden French toast dusted with powdered sugar served alongside two sunny-side up eggs and crispy bacon strips.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/7. FRENCH TOAST W FRUIT.jpg" class="mc-img" alt="French Toast with Fruit">
+          <div class="mc-top"><span class="mc-name">French Toast W. Fruit</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Thick slices of egg-soaked French toast topped with fresh strawberries, banana slices, and whipped cream.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/5. 3 COUNTRY EGGS.jpg" class="mc-img" alt="3 Country Eggs">
+          <div class="mc-top"><span class="mc-name">3 Country Eggs</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Three eggs cooked your way with thick-cut bacon strips and a generous serving of seasoned house potatoes.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/6 PANCAKES W 2 EGGS.jpg" class="mc-img" alt="Pancakes with 2 Eggs">
+          <div class="mc-top"><span class="mc-name">Pancakes W. 2 Eggs</span><div class="mc-right"><span class="mc-price">$11.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Two large fluffy pancakes served with two eggs your way and crispy bacon. Comfort breakfast at its finest.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/8. MEXICAN OMELETTE.jpg" class="mc-img" alt="Mexican Omelet">
+          <div class="mc-top"><span class="mc-name">Mexican Omelet</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Egg omelet packed with jalapeños, onion, cilantro, and chorizo, topped with cheddar cheese slices. Served with house potatoes and toasted bolillo roll.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/9.EGGS MEXICAN STYLE.jpg" class="mc-img" alt="Eggs Mexican Style">
+          <div class="mc-top"><span class="mc-name">Eggs Mexican Style</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Scrambled eggs cooked with tomato, jalapeño, onion, and cilantro (a la mexicana). Served with Mexican rice, black beans, and fresh avocado.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Chilaquiles W. Steak</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Classic chilaquiles in red or green salsa topped with crema and cotija, with a side of grilled steak.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Breakfast Burrito</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Eggs, cheese, choice of meat (bacon, chorizo, ham), and potatoes wrapped in a warm flour tortilla.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Breakfast Tacos (3)</span><div class="mc-right"><span class="mc-price">$12.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Three tacos with scrambled eggs and choice of protein: bacon, chorizo, or ham. Served with salsa.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Breakfast Sandwiches</span><div class="mc-right"><span class="mc-price">$4.95+</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Egg and cheese on a roll with your choice of: Bacon, Sausage, Ham, or Pork Roll. The Belly Buster (all four) for $5.95.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOUPS -->
+    <div class="msec" id="ms-soups">
+      <div class="ms-h"><h2>Soups &amp; Caldos 🍲</h2><p>Rich, slow-cooked broths. Thursdays feature Pozole.</p></div>
+      <div style="margin-bottom:20px;"><img src="Milltown TMD Photos/31. SEAFOOD SOUP.jpg" style="width:100%;max-height:260px;object-fit:cover;border-radius:4px;border:1px solid var(--bs);" alt="Seafood Soup"></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Sopa Azteca</span><div class="mc-right"><span class="mc-price">$7.99–$13.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Traditional tortilla soup with crispy tortilla strips, chipotle broth, crema, avocado, and cotija.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Caldo de Res</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Hearty beef shank soup with carrots, zucchini, corn, chayote, and potatoes in a rich savory broth.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Caldo de Pollo</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">Classic chicken soup with vegetables, rice, and cilantro in a golden savory broth.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Caldo de Camarón</span><div class="mc-right"><span class="mc-price">$18.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div><div class="mc-body"><div class="mc-desc">Shrimp and vegetable soup in a spiced tomato-chipotle broth. Rich and deeply flavorful.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/31. SEAFOOD SOUP.jpg" class="mc-img" alt="7 Mares Soup">
+          <div class="mc-top"><span class="mc-name">Caldo de Pescado / 7 Mares</span><div class="mc-right"><span class="mc-price">$22.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span><span class="mtag t-pop">⭐ Showstopper</span></div>
+          <div class="mc-body"><div class="mc-desc">The 7 Seas soup — packed with whole fish, crab legs, jumbo shrimp, mussels, clams, octopus, and calamari in a bold spicy broth.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Pancita</span><div class="mc-right"><span class="mc-price">$17.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-sp">Authentic</span></div><div class="mc-body"><div class="mc-desc">Traditional Mexican beef tripe soup slow-simmered with guajillo chiles, oregano, and garlic. Served with warm tortillas, onion, and lime.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Pozole Verde / Blanco / Rojo</span><div class="mc-right"><span class="mc-price">Market</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-pop">⭐ Thursdays Only</span></div><div class="mc-body"><div class="mc-desc">Our Jueves Pozolero special — a deeply comforting soup with hominy and your choice of pork or chicken in green tomatillo, white, or spicy red broth. Topped with cabbage, radish, oregano, and lime. Available Thursdays only.</div></div></div>
+      </div>
+    </div>
+
+    <!-- SALADS -->
+    <div class="msec" id="ms-salads">
+      <div class="ms-h"><h2>Salads 🥗</h2><p>Fresh and satisfying.</p></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/14. COBB SALAD.jpg" class="mc-img" alt="Cobb Salad">
+          <div class="mc-top"><span class="mc-name">Cobb Salad</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Adobo-spiced chicken over a bed of lettuce with cucumber, carrot, red onion, avocado, bell pepper, bacon, and fresh citrus slices.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Tex Mex Salad</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-veg">🌿 Veg Option</span></div><div class="mc-body"><div class="mc-desc">Shredded lettuce, black beans, corn, pico de gallo, cotija, and crema with choice of protein.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">La Mexicana Salad</span><div class="mc-right"><span class="mc-price">$15.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"></div><div class="mc-body"><div class="mc-desc">A loaded Mexican-style salad with nopales, avocado, tomato, onion, jalapeño, and cotija over shredded lettuce.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)"><div class="mc-img placeholder"></div><div class="mc-top"><span class="mc-name">Shrimp Salad</span><div class="mc-right"><span class="mc-price">$16.95</span><span class="mc-chev">▼</span></div></div><div class="mc-tags"><span class="mtag t-sea">🌊 Seafood</span></div><div class="mc-body"><div class="mc-desc">Grilled or sautéed shrimp over fresh greens with avocado, mango, citrus dressing, and cotija.</div></div></div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/16. BURRITO BOWL SHELL.jpg" class="mc-img" alt="Taco Shell Salad">
+          <div class="mc-top"><span class="mc-name">Taco Shell Salad</span><div class="mc-right"><span class="mc-price">$14.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Fan Favorite</span></div>
+          <div class="mc-body"><div class="mc-desc">Fresh salad served inside a giant crispy fried tortilla shell with your choice of protein, beans, cotija, and crema.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KIDS -->
+    <div class="msec" id="ms-kids">
+      <div class="ms-h"><h2>Kids Menu 🧒</h2><p>Little plates for little ones.</p></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/35. KIDS HAMBURGER.jpg" class="mc-img" alt="Kids Hamburger">
+          <div class="mc-top"><span class="mc-name">Kids Hamburger</span><div class="mc-right"><span class="mc-price">Market</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">A simple beef patty on a soft bun with melted cheddar cheese, served with a kid-sized portion of fries.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/35. KIDS QUESADILLA.jpg" class="mc-img" alt="Kids Quesadilla">
+          <div class="mc-top"><span class="mc-name">Kids Quesadilla</span><div class="mc-right"><span class="mc-price">Market</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Simple flour tortilla quesadilla with melted cheese, served with a kid-sized portion of crispy fries.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Chicken Fingers (5) Kids</span><div class="mc-right"><span class="mc-price">$13.95</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Five golden chicken fingers with a side of fries and dipping sauce. Kid-approved every time.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="msec" id="ms-desserts">
+      <div class="ms-h"><h2>Desserts 🍰</h2><p>Finish the way you started — with fire.</p></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/CHURROS.jpg" class="mc-img" alt="Churros">
+          <div class="mc-top"><span class="mc-name">Churros (3)</span><div class="mc-right"><span class="mc-price">$10.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Three long cinnamon-sugar churros drizzled with sweet cream. Crispy outside, soft inside, absolutely irresistible.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/3 LECHES.jpg" class="mc-img" alt="Tres Leches">
+          <div class="mc-top"><span class="mc-name">Tres Leches</span><div class="mc-right"><span class="mc-price">$5.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Classic</span></div>
+          <div class="mc-body"><div class="mc-desc">Moist sponge cake soaked in three milks (evaporated, condensed, and heavy cream), topped with whipped cream and a maraschino cherry. Light, creamy perfection.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/CHOCOFLAN.jpg" class="mc-img" alt="Chocoflan">
+          <div class="mc-top"><span class="mc-name">Chocoflan</span><div class="mc-right"><span class="mc-price">$6.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-sp">🏆 Signature</span></div>
+          <div class="mc-body"><div class="mc-desc">The "Impossible Cake" — a two-layer wonder with rich chocolate cake on the bottom and creamy vanilla flan on top, drizzled with caramel sauce.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/HOMEMADE CHEESECAKE.jpg" class="mc-img" alt="Homemade Cheesecake">
+          <div class="mc-top"><span class="mc-name">Homemade Cheesecake</span><div class="mc-right"><span class="mc-price">$6.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Made In-House</span></div>
+          <div class="mc-body"><div class="mc-desc">Rich, creamy Basque-style cheesecake with caramelized top, caramel drizzle, and sweet crema. Made from scratch, daily.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/CHOCOLATE CAKE.jpg" class="mc-img" alt="Chocolate Cake">
+          <div class="mc-top"><span class="mc-name">Chocolate Cake</span><div class="mc-right"><span class="mc-price">$5.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">A dense, rich slice of chocolate cake with dark chocolate ganache on top, served with strawberry sauce. Chocolate lovers rejoice.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/BANANA SPLIT.jpg" class="mc-img" alt="Banana Split">
+          <div class="mc-top"><span class="mc-name">Banana Split</span><div class="mc-right"><span class="mc-price">Market</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Kids Love It</span></div>
+          <div class="mc-body"><div class="mc-desc">Sliced banana topped with three scoops of ice cream, chocolate sauce, strawberry, sprinkles, whipped cream, and a cherry. Old-school fun.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Flan</span><div class="mc-right"><span class="mc-price">$5.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Classic Mexican crème caramel — silky egg custard with a golden caramel sauce. Simple and perfect.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="msec" id="ms-drinks">
+      <div class="ms-h"><h2>Drinks 🥤</h2><p>Mexican classics and more.</p></div>
+      <div class="mgrid">
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/AGUAS FRESCAS.jpg" class="mc-img" alt="Aguas Frescas">
+          <div class="mc-top"><span class="mc-name">Aguas Frescas</span><div class="mc-right"><span class="mc-price">$7.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Vegan</span></div>
+          <div class="mc-body"><div class="mc-desc">House-made fresh waters available daily in multiple flavors including Horchata (rice cinnamon), Jamaica (hibiscus), Tamarindo, Limonada, Mango, and more. Ask your server for today's flavors.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/JARRITOS.jpg" class="mc-img" alt="Jarritos">
+          <div class="mc-top"><span class="mc-name">Jarritos</span><div class="mc-right"><span class="mc-price">$3.50</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Iconic Mexican glass-bottle sodas. Available in Mandarin, Guava, Grapefruit, Fruit Punch, and more. Also Mexican Coca-Cola and Sidral Mundet apple soda.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <img src="Milltown TMD Photos/MILKSHAKE.jpg" class="mc-img" alt="Milkshake">
+          <div class="mc-top"><span class="mc-name">Milkshakes / Licuados</span><div class="mc-right"><span class="mc-price">$7.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-pop">⭐ Popular</span></div>
+          <div class="mc-body"><div class="mc-desc">Hand-spun milkshakes in Vanilla, Chocolate, Strawberry, or Oreo. Loaded with whipped cream, sprinkles, and toppings. Also available as Mexican-style licuados.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Fresh Juices</span><div class="mc-right"><span class="mc-price">$6.00</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"><span class="mtag t-veg">🌿 Fresh</span></div>
+          <div class="mc-body"><div class="mc-desc">Freshly squeezed juices. Ask about today's selection of seasonal fruits and vegetable blends.</div></div>
+        </div>
+        <div class="mcard" onclick="toggleCard(this)">
+          <div class="mc-img placeholder"></div>
+          <div class="mc-top"><span class="mc-name">Soda / Coffee / Red Bull</span><div class="mc-right"><span class="mc-price">$2–$4</span><span class="mc-chev">▼</span></div></div>
+          <div class="mc-tags"></div>
+          <div class="mc-body"><div class="mc-desc">Can Soda $2.00 · 2-Liter Soda $5.00 · Coffee $3.50 · Champurrado (Mexican hot chocolate) $3.50 · Red Bull $4.00</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end mbody -->
+  <footer>
+    <div class="fb-bot" style="border-top:none;padding-top:0;max-width:1200px;margin:0 auto;"><p>Menu items and prices subject to change. Please inform your server of any allergies.</p><p>© 2025 Milltown Tex Mex &amp; Grill</p></div>
+  </footer>
+</div><!-- end menu page -->
+
+<!-- ════════════ ABOUT ════════════ -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <p class="ey ey-o" style="margin-bottom:8px;">Our Story</p>
+    <h1>A Neighborhood Spot with <span>Real Roots</span></h1>
+  </div>
+  <div class="about-body">
+    <div class="about-grid">
+      <img src="Milltown TMD Photos/LOGO.jpg" alt="Milltown Tex Mex &amp; Grill" class="ab-logo">
+      <div class="ab-text">
+        <h2>Milltown <span>Tex Mex</span> &amp; Grill</h2>
+        <div class="ab-kicker">A Neighborhood Spot with Real Roots</div>
+        <p>Established in 2023, Milltown Tex Mex Deli isn't trying to be fancy — <strong>it's trying to be real.</strong></p>
+        <p>Built around the kind of food that speaks for itself, the menu pulls from traditional Mexican cooking, family-style recipes, and the kind of meals you grow up with. You see it in the variety — tacos filled with everything from classic al pastor to slow-braised birria, cemitas stacked the way they're meant to be, and plates from Oaxaca like mole and enchiladas, that take time to get just right.</p>
+        <p>This isn't a trimmed-down menu designed for trends. It's big, a little chaotic, and full of options because it reflects how people actually eat — mixing comfort food, street food, and full meals all in one place.</p>
+        <p>You'll also notice something else: it's part grill, part taqueria, part breakfast spot. That's intentional. It's built for regulars — people who stop in for a quick sandwich one day and come back for tacos or a full plate the next.</p>
+        <p>At its core, Milltown Tex Mex &amp; Grill feels like it was built by someone who didn't want to overcomplicate things — <strong>just serve generous portions of food that hits the mark, every time.</strong></p>
+        <div class="ab-pills">
+          <span class="ab-pill">🌮 Part Taqueria</span>
+          <span class="ab-pill">🥪 Part Grill</span>
+          <span class="ab-pill">🍳 Part Breakfast Spot</span>
+          <span class="ab-pill">💯 All Real</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-values">
+      <div class="av-card"><div class="av-icon">🌮</div><div class="av-title">Real Ingredients</div><div class="av-desc">No shortcuts. Every dish is made with the ingredients it's supposed to have.</div></div>
+      <div class="av-card"><div class="av-icon">🍽️</div><div class="av-title">Generous Portions</div><div class="av-desc">You'll never leave hungry. That's not a marketing line — it's just how we cook.</div></div>
+      <div class="av-card"><div class="av-icon">🏠</div><div class="av-title">Built for Regulars</div><div class="av-desc">We're a neighborhood spot. We want to know your name and your order.</div></div>
+    </div>
+  </div>
+  <footer>
+    <div class="ft">
+      <div class="fb-brand"><img src="Milltown TMD Photos/LOGO.jpg" alt="Milltown Logo"><p>Bold flavors, real community, cold drinks.</p></div>
+      <div class="fc"><h4>Hours</h4><p>Mon–Wed: 9AM – 8PM</p><p>Thu–Sat: 9AM – 10PM</p><p>Sunday: 9AM – 7PM</p></div>
+      <div class="fc"><h4>Visit Us</h4><p>123 Main St, Milltown</p><p>(732) 317-4464</p></div>
+      <div class="fc"><h4>Follow</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="fb-bot"><p>© 2025 Milltown Tex Mex &amp; Grill. All rights reserved.</p><p>Made with 🌶️ in Milltown</p></div>
+  </footer>
+</div>
+
+<!-- ════════════ RESERVATIONS ════════════ -->
+<div id="page-reservations" class="page">
+  <div class="rg">
+    <div class="ri">
+      <div class="ri-inn">
+        <p class="ey ey-o" style="margin-bottom:10px;">Catering ┃ private events </p>
+        <h1>Book Your<br><span>Event with us!</span></h1>
+        <div style="width:50px;height:3px;border-radius:2px;background:var(--org);margin:12px 0;"></div>
+        <p class="rsub">Host your event at the tastiest spot in Milltown. We accommodate parties up to 50.         Call us at least 4 days ahead of your event.</p>
+        <div style="margin-bottom:32px;">
+          <div class="hb-lbl" style="margin-bottom:12px;">Our Hours</div>
+          <div class="hr-row"><span class="hr-day">Monday – Wednesday</span><span class="hr-time">9 AM – 8 PM</span></div>
+          <div class="hr-row"><span class="hr-day">Thursday – Saturday</span><span class="hr-time">9 AM – 10 PM</span></div>
+          <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">9 AM – 7 PM</span></div>
+        </div>
+        <div class="ri-ex">
+          <p style="font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--yel);margin-bottom:5px;">Walk-Ins Welcome</p>
+          <p style="font-size:.81rem;font-style:italic;color:var(--dim);line-height:1.5;">Dine in Walk-ins always welcome, subject to availability. Last seating 45 min before close.</p>
+        </div>
+      </div>
+    </div>
+    <div class="rf">
+      <h2>Book a Catering order</h2>
+      <div id="res-form">
+        <div class="frow"><div class="fg"><label>First Name</label><input type="text" id="rfirst" placeholder="Maria"></div><div class="fg"><label>Last Name</label><input type="text" id="rlast" placeholder="Garcia"></div></div>
+        <div class="frow"><div class="fg"><label>Email</label><input type="email" id="remail" placeholder="you@example.com"></div><div class="fg"><label>Phone</label><input type="tel" id="rphone" placeholder="(555) 000-0000"></div></div>
+        <div class="frow">
+          <div class="fg"><label>Date</label><input type="date" id="rdate" onchange="chkAvail()"></div>
+          <div class="fg">
+            <label>Time</label>
+            <select id="rtime" onchange="chkAvail()">
+              <option value="">Select time</option>
+              <option>9:00 AM</option><option>9:30 AM</option><option>10:00 AM</option><option>10:30 AM</option>
+              <option>11:00 AM</option><option>11:30 AM</option><option>12:00 PM</option><option>12:30 PM</option>
+              <option>1:00 PM</option><option>1:30 PM</option><option>2:00 PM</option><option>2:30 PM</option>
+              <option>3:00 PM</option><option>3:30 PM</option><option>4:00 PM</option><option>4:30 PM</option>
+              <option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option>
+              <option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option>
+              <option>9:00 PM</option><option>9:30 PM</option>
+            </select>
+            <div id="am" class="am"></div>
+          </div>
+        </div>
+        <div class="frow"><div class="fg"><label>Party Size</label><select id="rparty"><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31+</option></select></div><div class="fg"><label>Occasion</label><select id="rocc"><option value="">None</option><option>Birthday</option><option>Anniversary</option><option>Business Lunch</option><option>Date Night</option><option>Group Celebration</option></select></div></div>
+        <div class="fg"><label>Special Requests</label><textarea id="rnotes" placeholder="Allergies, seating preferences, dietary needs…"></textarea></div>
+        <button class="sbtn" onclick="subRes()">Confirm Reservation</button>
+      </div>
+      <div class="sbox" id="res-ok">
+        <span style="font-size:3rem;">🎉</span>
+        <h3>You're Booked!</h3>
+        <p>We've got your table reserved. A confirmation will be sent to your email shortly. Can't wait to see you!</p>
+        <button class="sbtn" style="width:auto;padding:13px 36px;" onclick="rstRes()">Make Another Reservation</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ ORDER ════════════ -->
+<div id="page-order" class="page">
+  <div class="oh"><p class="ey ey-o" style="margin-bottom:7px;">Delivery &amp; Pickup</p><h1>Order <span>Online</span></h1><p>Fresh Tex-Mex to your door or ready for pickup.</p></div>
+  <div class="ob">
+    <div class="ogrid">
+      <a href="https://www.doordash.com/store/milltown-texmex-deli-milltown-24912632/78461163/?msockid=0e0186feea866b821cb991f8eb766a4b" class="oc oc-o" target="_blank" rel="noreferrer noopener"><span class="oc-icon">🛵</span><div class="oc-title">DoorDash</div><div class="oc-sub">Fast delivery straight to your door. Track your order live from our kitchen.</div><div class="oc-cta">Order on DoorDash →</div></a>
+      <a href="https://www.ubereats.com/store/milltown-tex-mex-deli/tdq6Iy-TWaCIxiCTc1VDLg?msockid=0e0186feea866b821cb991f8eb766a4b" class="oc oc-p" target="_blank" rel="noreferrer noopener"><span class="oc-icon">🦉</span><div class="oc-title">Uber Eats</div><div class="oc-sub">Order via Uber Eats for delivery or pickup at your convenience.</div><div class="oc-cta">Order on Uber Eats →</div></a>
+      <a href="https://www.grubhub.com/restaurant/milltown-texmex-grill-122-n-main-st-milltown/8912944" class="oc oc-y" target="_blank" rel="noreferrer noopener"><span class="oc-icon">🍽️</span><div class="oc-title">GrubHub</div><div class="oc-sub">Find us on GrubHub and get your order delivered or pick it up fast.</div><div class="oc-cta">Order on GrubHub →</div></a>
+      <a href="#" class="oc oc-c" onclick="return false;"><span class="oc-icon">📞</span><div class="oc-title">Call It In</div><div class="oc-sub">Old school? We love it. Call us and we'll have your order ready and waiting.</div><div class="oc-cta">(732) 317-4464</div></a>
+    </div>
+    <div class="review-cta">
+      <div class="review-card">
+        <p class="ey ey-o" style="margin-bottom:6px;">Find us on Yelp!</p>
+        <h3>Support our business by giving us a 5-star review!</h3>
+        <a href="https://www.yelp.com/biz/milltown-tex-mex-deli-milltown" class="btn btn-pk" target="_blank" rel="noreferrer noopener">Leave a Yelp Review</a>
+      </div>
+      <div class="review-card">
+        <p class="ey ey-o" style="margin-bottom:6px;">Find us on Google!</p>
+        <h3>Don't forget to support our business by giving us a 5-star review!</h3>
+        <a href="https://www.google.com/search?q=milltown+tex+mex&rlz=1C1HKFL_enUS1202US1202&oq=milltown+tex+mex&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQIxgnMhAIAhAuGK8BGMcBGIAEGI4FMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMggIBhAAGBYYHjIICAcQABgWGB4yCAgIEAAYFhgeMgoICRAAGAoYFhge0gEJOTQ0NmowajE1qAIIsAIB8QUHhd7pzoNtag&sourceid=chrome&ie=UTF-8" class="btn btn-y" target="_blank" rel="noreferrer noopener">Leave a Google Review</a>
+      </div>
+    </div>
+    <div class="onote"><p><strong>Pickup is always free.</strong> Orders ready in 15–25 minutes. For catering 10+ people, email us at <strong>catering@milltowntexmex.com</strong> — we'll bring the fiesta to you.</p></div>
+  </div>
+  <footer><div class="fb-bot" style="border-top:none;padding-top:0;max-width:1200px;margin:0 auto;"><p>Delivery availability based on your location and partner coverage areas.</p><p>© 2025 Milltown Tex Mex &amp; Grill</p></div></footer>
+</div>
+
+<!-- ════════════ PLAY ════════════ -->
+<div id="page-fun" class="page">
+  <div class="fh"><p class="ey ey-p" style="margin-bottom:7px;">Interactive Fun</p><h1>The <span>Spice</span> Zone</h1><p>Test your knowledge, spin for your meal, and prove your heat level.</p></div>
+  <div class="fb">
+
+    <!-- WHEEL -->
+    <div class="gc gc-o">
+      <div class="gt">🎡 Spin for Your Meal</div>
+      <div class="gd">Can't decide what to order? Lettuce choose for you!</div>
+      <div class="wcon">
+        <div class="wwrap"><div class="wptr"></div><canvas id="spice-wheel" width="280" height="280"></canvas></div>
+        <div class="wres" id="wres"><div class="wr-dish" id="wrd"></div><div class="wr-desc" id="wrde"></div></div>
+        <button id="spin-btn" onclick="spinW()">SPIN IT!</button>
+      </div>
+    </div>
+
+    <!-- MEXICAN CULTURE TRIVIA -->
+    <div class="gc gc-p">
+      <div class="gt">Mexican Culture Trivia</div>
+      <div class="gd">How well do you know Mexican food, history, and culture? 10 questions. Score at the end.</div>
+      <div id="tv-inner">
+        <div class="tv-score" id="tv-score">Score: 0 / 0</div>
+        <div class="tv-pbar"><div class="tv-pbar-fill" id="tv-pbar" style="width:0%"></div></div>
+        <div class="tv-cat" id="tv-cat"></div>
+        <div class="tv-q" id="tv-q"></div>
+        <div class="tv-opts" id="tv-opts"></div>
+        <div class="tv-feedback" id="tv-fb"></div>
+        <button class="tv-next" id="tv-next" onclick="tvNext()">Next Question →</button>
+      </div>
+      <div class="tv-result" id="tv-result">
+        <div class="tv-fin-score" id="tv-fin-score"></div>
+        <div class="tv-fin-title" id="tv-fin-title"></div>
+        <div class="tv-fin-msg" id="tv-fin-msg"></div>
+        <button class="tv-restart" onclick="tvRestart()">Play Again</button>
+      </div>
+    </div>
+
+    <!-- HEAT QUIZ -->
+    <div class="gc gc-y">
+      <div class="gt">🌶️ What's Your Heat Level?</div>
+      <div class="gd">5 questions to find out what you should order based on your spice tolerance.</div>
+      <div id="qi">
+        <div class="qprog" id="qprog"></div>
+        <div class="qtxt" id="qtxt"></div>
+        <div class="qopts" id="qopts"></div>
+      </div>
+      <div class="qres" id="qres">
+        <span class="qr-e" id="qre"></span>
+        <div class="qr-t" id="qrt"></div>
+        <div class="qr-r" id="qrr"></div>
+        <button class="qr-btn" onclick="rstQ()">Take It Again</button>
+      </div>
+    </div>
+
+  </div>
+  <footer><div class="fb-bot" style="border-top:none;padding-top:0;max-width:1200px;margin:0 auto;"><p>All games are purely for fun — no purchase required!</p><p>© 2025 Milltown Tex Mex &amp; Grill</p></div></footer>
+</div>
+
+<script>
+/* ── NAVIGATION ── */
+function showPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nlinks a').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  const n=document.getElementById('nav-'+p);if(n)n.classList.add('active');
+  window.scrollTo(0,0);
+  if(p==='fun'){setTimeout(initW,80);setTimeout(initTV,80);setTimeout(initQ,80);}
+}
+/* ── MENU CARDS ── */
+function toggleCard(el){
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.mcard.open').forEach(c=>c.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+function showMS(id,btn){
+  document.querySelectorAll('.msec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('ms-'+id).classList.add('active');btn.classList.add('active');
+}
+/* ── RESERVATIONS ── */
+function chkAvail(){
+  const dv=document.getElementById('rdate').value,tv=document.getElementById('rtime').value,msg=document.getElementById('am');
+  if(!dv||!tv){msg.style.display='none';return;}
+  const d=new Date(dv+'T00:00:00'),day=d.getDay(),h=parseInt(tv);
+  const pm=tv.includes('PM')&&h!==12,h24=pm?h+12:(tv.includes('AM')&&h===12?0:h);
+  const close=day===0?19:(day<=3?20:22);
+  msg.style.display='block';
+  if(h24>=9&&h24<close){msg.className='am am-ok';msg.textContent='✓ We\'re open — this time works!';}
+  else{const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];const cl=close>12?(close-12)+'PM':close+'AM';msg.className='am am-bad';msg.textContent=`✗ We close at ${cl} on ${days[day]}. Please pick an earlier time.`;}
+}
+function subRes(){
+  const f=document.getElementById('rfirst').value.trim(),l=document.getElementById('rlast').value.trim();
+  const d=document.getElementById('rdate').value,t=document.getElementById('rtime').value;
+  if(!f||!l||!d||!t){alert('Please fill in your name, date, and preferred time.');return;}
+  document.getElementById('res-form').style.display='none';document.getElementById('res-ok').style.display='block';
+}
+function rstRes(){
+  ['rfirst','rlast','remail','rphone','rnotes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('rdate').value='';document.getElementById('rtime').value='';
+  document.getElementById('am').style.display='none';
+  document.getElementById('res-form').style.display='block';document.getElementById('res-ok').style.display='none';
+}
+
+/* ── WHEEL ── */
+const WI=[
+  {l:'Birria\nTacos',c:'#C02020'},{l:'Machete\nGigante',c:'#B84808'},
+  {l:'Mole\nOaxaqueño',c:'#D45008'},{l:'El\nPatrón',c:'#A03010'},
+  {l:'Molcajete\nMariscos',c:'#8B2020'},{l:'Tlayuda\nOaxaqueña',c:'#C85010'},
+  {l:'Chilaquiles\nOaxaqueños',c:'#903018'},{l:'Parrillada\nde la Casa',c:'#B83808'},
+];
+const WD={'Birria\nTacos':{n:'Birria Tacos',d:'Slow-braised beef, Oaxacan cheese, consommé for dipping. Pure magic. $15.95'},
+'Machete\nGigante':{n:'Machete Gigante',d:'A massive crispy masa tortilla filled with your choice of meat and all the toppings. $17.95'},
+'Mole\nOaxaqueño':{n:'Mole Oaxaqueño de Pollo',d:'Rich, complex Oaxacan black mole over chicken. This sauce took days to make. $16.95'},
+'El\nPatrón':{n:'El Patrón',d:'Grilled ribeye and seasoned Gulf shrimp — the boss of the menu. Ask for pricing.'},
+'Molcajete\nMariscos':{n:'Molcajete de Mariscos',d:'A volcanic stone bowl overflowing with crab, shrimp, octopus, calamari, mussels, and fish. Ask for pricing.'},
+'Tlayuda\nOaxaqueña':{n:'Tlayuda Oaxaqueña',d:'Giant crispy tortilla with Oaxacan cheese, beans, and choice of meat — decorated beautifully. $16.95'},
+'Chilaquiles\nOaxaqueños':{n:'Chilaquiles Oaxaqueños',d:'Chips in mole with cotija, crema, two fried eggs and carne asada. The ultimate breakfast plate. $15.95'},
+'Parrillada\nde la Casa':{n:'Parrillada de la Casa',d:'Mixed grill feast — carne asada, chicken, chorizo, panela cheese, and more. Ask for pricing.'}};
+let wA=0,wS=false;
+function initW(){const c=document.getElementById('spice-wheel');if(c)drawW(c,wA);}
+function drawW(c,rot){
+  const ctx=c.getContext('2d'),cx=c.width/2,cy=c.height/2,r=c.width/2-4,sl=(2*Math.PI)/WI.length;
+  ctx.clearRect(0,0,c.width,c.height);ctx.save();ctx.translate(cx,cy);ctx.rotate(rot*Math.PI/180);
+  WI.forEach((item,i)=>{
+    const s=i*sl,e=s+sl;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,r,s,e);ctx.closePath();
+    ctx.fillStyle=item.c;ctx.fill();ctx.strokeStyle='rgba(245,237,216,.13)';ctx.lineWidth=1;ctx.stroke();
+    ctx.save();ctx.rotate(s+sl/2);ctx.textAlign='right';ctx.fillStyle='rgba(245,237,216,.9)';
+    ctx.font='bold 9px "Barlow Condensed",sans-serif';
+    const lines=item.l.split('\n');
+    if(lines.length===1)ctx.fillText(item.l,r-8,4);
+    else{ctx.fillText(lines[0],r-8,-3);ctx.fillText(lines[1],r-8,9);}
+    ctx.restore();
+  });
+  ctx.beginPath();ctx.arc(0,0,20,0,2*Math.PI);ctx.fillStyle='#0D0D0D';ctx.fill();
+  ctx.strokeStyle='rgba(240,192,32,.7)';ctx.lineWidth=2;ctx.stroke();
+  ctx.fillStyle='rgba(240,192,32,.9)';ctx.font='bold 8px "Barlow Condensed",sans-serif';
+  ctx.textAlign='center';ctx.fillText('GO',0,3);ctx.restore();
+}
+function spinW(){
+  if(wS)return;wS=true;document.getElementById('spin-btn').disabled=true;
+  document.getElementById('wres').classList.remove('rev');
+  const c=document.getElementById('spice-wheel'),extra=360*(5+Math.floor(Math.random()*5)),land=Math.floor(Math.random()*360);
+  const total=extra+land,dur=3600,start=performance.now(),sa=wA;
+  function ease(t){return 1-Math.pow(1-t,4);}
+  function tick(now){
+    const p=Math.min((now-start)/dur,1);wA=sa+total*ease(p);drawW(c,wA);
+    if(p<1)requestAnimationFrame(tick);
+    else{
+      wS=false;document.getElementById('spin-btn').disabled=false;
+      const norm=((wA%360)+360)%360,slice=360/WI.length,pa=(360-norm+270)%360;
+      const idx=Math.floor(pa/slice)%WI.length,info=WD[WI[idx].l]||{n:WI[idx].l.replace('\n',' '),d:''};
+      document.getElementById('wrd').textContent=info.n;document.getElementById('wrde').textContent=info.d;
+      document.getElementById('wres').classList.add('rev');
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ── TRIVIA ── */
+const TRIVIA=[
+  {q:"What is a 'molcajete'?",cat:"Food & Kitchen",opts:["A type of taco","A volcanic stone mortar","A Mexican bread","A type of cheese"],a:1,f:"A molcajete is a traditional Mexican mortar and pestle made from volcanic rock. It's used to grind spices and make salsas, and at Milltown you can get a full molcajete bowl piled high with seafood or meats!"},
+  {q:"'Mole negro' originates from which Mexican state?",cat:"Regional Mexican Food",opts:["Jalisco","Veracruz","Oaxaca","Puebla"],a:2,f:"Mole negro is one of the most celebrated dishes of Oaxaca, known as 'the land of seven moles.' It can contain up to 30 ingredients and takes days to prepare properly."},
+  {q:"What is 'birria' traditionally made from?",cat:"Food History",opts:["Pork","Goat or beef","Chicken","Seafood"],a:1,f:"Birria originated in Jalisco, Mexico, traditionally made from goat. In the US, beef birria has become extremely popular, especially as birria tacos dipped in rich consommé."},
+  {q:"What does 'pozole' contain that makes it unique?",cat:"Food & Kitchen",opts:["Hominy (dried maize kernels)","Black beans","Cactus","Tomatillos"],a:0,f:"Pozole is defined by its hominy — dried corn kernels that have been treated with an alkali (nixtamalized). The hominy swells and becomes tender in the slow-simmered broth. Milltown serves it every Thursday!"},
+  {q:"'Tlayuda' is a specialty dish from which city?",cat:"Regional Mexican Food",opts:["Mexico City","Guadalajara","Oaxaca City","Monterrey"],a:2,f:"The tlayuda is a Oaxacan specialty — a large, partially dried tortilla spread with asiento (unrefined lard), beans, Oaxacan string cheese, and various toppings. It's sometimes called the 'Oaxacan pizza.'"},
+  {q:"What is the main herb used in cemitas poblanas?",cat:"Food & Kitchen",opts:["Cilantro","Epazote","Papalo (papaloquelite)","Hierba santa"],a:2,f:"Papalo (papaloquelite) is the distinctive herb used in authentic cemitas. It has a bold, complex flavor unlike anything else — a mix of cilantro, rue, and something totally its own."},
+  {q:"What does 'Chilaquiles Oaxaqueños' mean?",cat:"Food & Language",opts:["Oaxacan style chilaquiles","Spicy green chilaquiles","Beef chilaquiles","Fried chilaquiles"],a:0,f:"'Oaxaqueños' means 'from Oaxaca' or 'Oaxacan style.' Oaxacan chilaquiles feature the region's distinctive black mole sauce, making them richer and more complex than other versions."},
+  {q:"What is 'Dia de los Muertos' (Day of the Dead)?",cat:"Mexican Culture",opts:["A spooky Halloween equivalent","A multi-day celebration honoring deceased loved ones","A harvest festival","A religious fast"],a:1,f:"Día de los Muertos is a joyful Mexican tradition — not a somber one. Families build ofrendas (altars) with photos, marigold flowers, and favorite foods of their departed. It's a celebration of life and memory."},
+  {q:"A 'molcajete de mariscos' at Milltown contains which of these?",cat:"Milltown Menu",opts:["Only shrimp","Only fish","Crab, shrimp, octopus, calamari, mussels and fish","Lobster only"],a:2,f:"Milltown's Molcajete de Mariscos is the most dramatic dish on the menu — a volcanic stone bowl overflowing with crab claws, shrimp, octopus, calamari, mussels, and fried fish in a spicy house broth."},
+  {q:"What makes a 'pambazo' different from other Mexican sandwiches?",cat:"Food & Kitchen",opts:["It uses a croissant","The bread is dipped in guajillo chile sauce and fried","It's served cold","It's made with pita bread"],a:1,f:"A pambazo's signature feature is that the white bolillo roll is dipped in guajillo chile sauce and then pan-fried until crispy and red. Stuffed with potatoes and chorizo, it's a Mexico City street food icon."},
+];
+let tvState={i:0,score:0,answered:false};
+function initTV(){tvState={i:0,score:0,answered:false};document.getElementById('tv-inner').style.display='block';document.getElementById('tv-result').style.display='none';tvRender();}
+function tvRender(){
+  const q=TRIVIA[tvState.i];
+  document.getElementById('tv-score').textContent=`Score: ${tvState.score} / ${tvState.i}`;
+  document.getElementById('tv-pbar').style.width=`${(tvState.i/TRIVIA.length)*100}%`;
+  document.getElementById('tv-cat').textContent=`Category: ${q.cat}`;
+  document.getElementById('tv-q').innerHTML=`<span class="tv-num">${tvState.i+1}/${TRIVIA.length}</span> — ${q.q}`;
+  document.getElementById('tv-opts').innerHTML=q.opts.map((o,i)=>`<button class="tv-opt" onclick="tvAnswer(${i})">${o}</button>`).join('');
+  document.getElementById('tv-fb').className='tv-feedback';document.getElementById('tv-fb').style.display='none';
+  document.getElementById('tv-next').className='tv-next';tvState.answered=false;
+}
+function tvAnswer(i){
+  if(tvState.answered)return;tvState.answered=true;
+  const q=TRIVIA[tvState.i],opts=document.querySelectorAll('.tv-opt');
+  opts.forEach(o=>o.disabled=true);
+  if(i===q.a){tvState.score++;opts[i].classList.add('correct');const fb=document.getElementById('tv-fb');fb.className='tv-feedback ok show';fb.style.display='block';fb.innerHTML='✓ Correct! '+q.f;}
+  else{opts[i].classList.add('wrong');opts[q.a].classList.add('correct');const fb=document.getElementById('tv-fb');fb.className='tv-feedback ko show';fb.style.display='block';fb.innerHTML='✗ Not quite. '+q.f;}
+  document.getElementById('tv-score').textContent=`Score: ${tvState.score} / ${tvState.i+1}`;
+  document.getElementById('tv-next').className='tv-next show';
+}
+function tvNext(){
+  tvState.i++;
+  if(tvState.i>=TRIVIA.length){
+    document.getElementById('tv-inner').style.display='none';
+    const r=document.getElementById('tv-result');r.style.display='block';
+    const pct=Math.round((tvState.score/TRIVIA.length)*100);
+    document.getElementById('tv-fin-score').textContent=`${tvState.score} / ${TRIVIA.length}`;
+    const titles=['Keep Exploring!','Nice Try!','Solid Knowledge!','Mexico Expert!','Mexpert Supreme!'];
+    const msgs=["Don't worry — now you know more! Come in and try the dishes you learned about.",
+      "You've got the basics down. Try the Molcajete de Mariscos to expand your horizons.",
+      "You know your Mexican food and culture. A tlayuda and some birria are calling your name.",
+      "Impressive! You clearly appreciate the real deal. The Mole Oaxaqueño was made for you.",
+      "¡Perfecto! You are a true connoisseur. The chef would be honored to cook for someone like you."];
+    const ti=Math.min(Math.floor(tvState.score/2),4);
+    document.getElementById('tv-fin-title').textContent=titles[ti];
+    document.getElementById('tv-fin-msg').textContent=msgs[ti];
+  } else tvRender();
+}
+function tvRestart(){initTV();}
+
+/* ── HEAT QUIZ ── */
+const QQ=[
+  {q:"You bite into a chip with a little kick. Your reaction?",o:["Reach for water immediately","Nice, barely noticed","I want more of that","Child's play — bring the fire"]},
+  {q:"Your perfect salsa is…",o:["Mild and fresh","A little tingle","Good heat, still flavorful","If my eyes aren't watering, it's mild"]},
+  {q:"How do you feel about habanero peppers?",o:["Terrifying","Respect from a distance","A worthy challenge","I eat them like snacks"]},
+  {q:"Someone orders the spiciest thing. You…",o:["Order something different","Ask for a small taste","Order the same thing","Already ordered two"]},
+  {q:"Drink of choice with spicy food?",o:["Ice water, always","Aguas frescas to cool down","Beer — spice and bubbles","Nothing. I need to feel every bit."]},
+];
+const QR=[
+  {e:'🧊',t:'The Mild Explorer',r:'Start with Huevos Rancheros for breakfast, a classic Burrito Bowl for lunch, and our Mole Oaxaqueño for dinner. Rich flavor without the fire.',min:0},
+  {e:'🌡️',t:'The Warm Soul',r:'Al Pastor Tacos, our Tlayuda Oaxaqueña, and a Birria Quesadilla with consommé are calling your name. Just enough heat to know it\'s there.',min:6},
+  {e:'🔥',t:'The Heat Seeker',r:'Go straight for the Molcajete de Mariscos or the Mexican Fajita. Ask for the Diabla sauce on the side. You can handle it.',min:11},
+  {e:'🌋',t:'The Inferno Chaser',r:'You need the Spicy Diabla Burger, the hottest salsa on every taco, and the Camarones al Gusto cooked diabla style. We respect and fear you.',min:16},
+];
+let qs={i:0,sc:0};
+function initQ(){qs={i:0,sc:0};document.getElementById('qi').style.display='block';document.getElementById('qres').style.display='none';renderQ();}
+function renderQ(){
+  const q=QQ[qs.i];
+  document.getElementById('qprog').innerHTML=QQ.map((_,i)=>`<div class="qd ${i<qs.i?'done':i===qs.i?'act':''}"></div>`).join('');
+  document.getElementById('qtxt').innerHTML=`<span class="qnum">${qs.i+1}/${QQ.length}</span> — ${q.q}`;
+  document.getElementById('qopts').innerHTML=q.o.map((o,i)=>`<button class="qopt" onclick="pickA(${i})">${o}</button>`).join('');
+}
+function pickA(i){
+  qs.sc+=i;qs.i++;
+  if(qs.i<QQ.length)renderQ();
+  else{
+    document.getElementById('qi').style.display='none';
+    const r=document.getElementById('qres');r.style.display='block';
+    const res=[...QR].reverse().find(x=>qs.sc>=x.min)||QR[0];
+    document.getElementById('qre').textContent=res.e;document.getElementById('qrt').textContent=res.t;document.getElementById('qrr').textContent=res.r;
+  }
+}
+function rstQ(){initQ();}
+
+/* ── INIT ── */
+window.addEventListener('load',()=>{
+  const today=new Date().toISOString().split('T')[0];
+  const de=document.getElementById('rdate');if(de)de.min=today;
+});
+</script>
+</body>
+</html>
