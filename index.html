@@ -47,7 +47,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 
 /* MOBILE MENU */
 .hamburger{display:none;width:30px;height:24px;flex-direction:column;justify-content:space-around;cursor:pointer;}
-.hamburger span{width:100%;height:3px;background:var(--cre);transition:0.3s;}
+.hamburger span{width:100%;height:3px;background:var(--cre);border-radius:2px;transition:all 0.3s ease;}
+.hamburger.open span:nth-child(1){transform:translateY(9px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg);}
 .mobile-menu{display:none;position:fixed;top:114px;left:0;right:0;background:rgba(13,13,13,.98);backdrop-filter:blur(16px);border-top:1px solid var(--org);z-index:298;padding:8px 0 20px;max-height:calc(100vh - 114px);overflow-y:auto;}
 .mobile-menu a{display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;color:rgba(245,237,216,.75);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid rgba(245,237,216,.07);transition:all .2s;}
 .mobile-menu a:last-child{border-bottom:none;}
@@ -764,7 +767,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     <div class="ft">
       <div class="fb-brand"><img src="photos/LOGO.jpg" alt="Milltown Logo"><p>Bold flavors, real community, cold drinks. Come hungry. Leave happy.</p></div>
       <div class="fc"><h4>Hours</h4><p>Mon–Wed: 9AM – 8PM</p><p>Thu–Sat: 9AM – 10PM</p><p>Sunday: 9AM – 7PM</p></div>
-      <div class="fc"><h4>Visit Us</h4><p>123 Main St, Milltown</p><p>(732) 317-4464</p><a href="mailto:hello@milltowntexmex.com">hello@milltowntexmex.com</a></div>
+      <div class="fc"><h4>Visit Us</h4><p>123 Main St, Milltown</p><p>(732) 317-4464</p><a href="#">hello@milltowntexmex.com</a></div>
       <div class="fc"><h4>Follow</h4><a href="https://www.instagram.com/milltown_texmex_grill/reels/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://www.facebook.com/MilltownTexMexGrill" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://www.tiktok.com/@milltowntexmex_grill" target="_blank" rel="noreferrer noopener">TikTok</a></div>
     </div>
     <div class="fb-bot"><p>© 2025 Milltown Tex Mex &amp; Grill. All rights reserved.</p><p>Made with 🌶️ in Milltown</p></div>
@@ -1763,11 +1766,15 @@ function showPage(p){
 }
 function closeMobileMenu(){
   const mm=document.getElementById('mobile-menu');
+  const hb=document.querySelector('.hamburger');
   if(mm)mm.classList.remove('open');
+  if(hb)hb.classList.remove('open');
 }
 function toggleMobileMenu(){
   const mm=document.getElementById('mobile-menu');
+  const hb=document.querySelector('.hamburger');
   if(mm)mm.classList.toggle('open');
+  if(hb)hb.classList.toggle('open');
 }
 /* ── MENU CARDS ── */
 function toggleCard(el){
@@ -1792,48 +1799,10 @@ function chkAvail(){
   else{const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];const cl=close>12?(close-12)+'PM':close+'AM';msg.className='am am-bad';msg.textContent=`✗ We close at ${cl} on ${days[day]}. Please pick an earlier time.`;}
 }
 function subRes(){
-  const f   = document.getElementById('rfirst').value.trim();
-  const l   = document.getElementById('rlast').value.trim();
-  const em  = document.getElementById('remail').value.trim();
-  const ph  = document.getElementById('rphone').value.trim();
-  const d   = document.getElementById('rdate').value;
-  const t   = document.getElementById('rtime').value;
-  const sz  = document.getElementById('rparty').value;
-  const occ = document.getElementById('rocc').value;
-  const nts = document.getElementById('rnotes').value.trim();
+  const f=document.getElementById('rfirst').value.trim(),l=document.getElementById('rlast').value.trim();
+  const d=document.getElementById('rdate').value,t=document.getElementById('rtime').value;
   if(!f||!l||!d||!t){alert('Please fill in your name, date, and preferred time.');return;}
-  // Build mailto with all reservation details
-  const subject = encodeURIComponent('New Reservation Request — ' + f + ' ' + l);
-  const body = encodeURIComponent(
-    'RESERVATION REQUEST
-' +
-    '═══════════════════════════
-' +
-    'Name:        ' + f + ' ' + l + '
-' +
-    'Email:       ' + (em || 'Not provided') + '
-' +
-    'Phone:       ' + (ph || 'Not provided') + '
-' +
-    'Date:        ' + d + '
-' +
-    'Time:        ' + t + '
-' +
-    'Party Size:  ' + sz + '
-' +
-    'Occasion:    ' + (occ || 'None') + '
-' +
-    'Notes:       ' + (nts || 'None') + '
-' +
-    '═══════════════════════════
-' +
-    'Sent from milltowntexmex.com'
-  );
-  // Open mailto — restaurant clicks send from their email client
-  window.location.href = 'mailto:hello@milltowntexmex.com?subject=' + subject + '&body=' + body;
-  // Show confirmation
-  document.getElementById('res-form').style.display='none';
-  document.getElementById('res-ok').style.display='block';
+  document.getElementById('res-form').style.display='none';document.getElementById('res-ok').style.display='block';
 }
 function rstRes(){
   ['rfirst','rlast','remail','rphone','rnotes'].forEach(id=>document.getElementById(id).value='');
