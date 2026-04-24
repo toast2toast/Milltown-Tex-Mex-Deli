@@ -48,16 +48,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 /* MOBILE MENU */
 .hamburger{display:none;width:30px;height:24px;flex-direction:column;justify-content:space-around;cursor:pointer;}
 .hamburger span{width:100%;height:3px;background:var(--cre);transition:0.3s;}
-.mobile-menu{display:none;position:fixed;top:114px;left:0;right:0;background:rgba(13,13,13,.98);backdrop-filter:blur(16px);border-top:1px solid var(--org);z-index:298;padding:8px 0 20px;max-height:calc(100vh - 114px);overflow-y:auto;}
-.mobile-menu a{display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;color:rgba(245,237,216,.75);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid rgba(245,237,216,.07);transition:all .2s;}
+.mobile-menu{display:none;position:fixed;top:114px;left:0;right:0;background:var(--blk);border-top:1px solid var(--org);z-index:299;padding:16px 0;}
+.mobile-menu a{display:block;text-align:center;padding:12px 0;color:var(--mu);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid rgba(245,237,216,.1);}
 .mobile-menu a:last-child{border-bottom:none;}
-.mobile-menu a:hover{color:var(--yel);background:rgba(240,192,32,.06);}
-.mobile-menu a.m-order{color:var(--org);font-size:1.05rem;}
-.mob-social{display:flex;align-items:center;justify-content:center;gap:16px;padding:18px 0 4px;margin-top:4px;border-top:1px solid rgba(245,237,216,.1);}
-.mob-social-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);text-align:center;padding:0 0 10px;}
-.mob-soc-btn{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);text-decoration:none;transition:all .25s;}
-.mob-soc-btn:hover{background:rgba(240,112,16,.25);border-color:var(--org);transform:scale(1.1);}
-.mob-soc-btn svg{width:22px;height:22px;fill:white;}
+.mobile-menu a:hover{color:var(--yel);}
 .mobile-menu.open{display:block;}
 
 /* ===== HOME ===== */
@@ -100,24 +94,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .btn-o{background:var(--org);color:white;}.btn-o:hover{background:#d05f0a;transform:translateY(-2px);box-shadow:0 8px 28px rgba(240,112,16,.45);}
 .btn-yl{background:transparent;color:var(--yel);border:2px solid var(--yel);}.btn-yl:hover{background:rgba(240,192,32,.1);transform:translateY(-2px);}
 .btn-pk{background:transparent;color:var(--pnk);border:2px solid var(--pnk);}.btn-pk:hover{background:rgba(232,24,106,.1);transform:translateY(-2px);}
-.btn-y{background:var(--yel);color:#111;border:none;}.btn-y:hover{background:#d4a800;transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,192,32,.35);}
+.btn-y{background:var(--yel);color:var(--blk);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:13px 34px;border-radius:4px;display:inline-block;text-decoration:none;transition:all .25s;font-size:.88rem;}.btn-y:hover{background:#d4a800;transform:translateY(-2px);}
 .div-o{width:50px;height:3px;border-radius:2px;background:var(--org);margin:12px 0;}
-
-
-/* ── HERO PHOTOS ── */
-.hero-bg{position:absolute;inset:0;}
-.hero-photos{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;}
-.hp{width:100%;height:100%;object-fit:cover;display:block;}
-.hp1{animation:hzoom 14s ease-in-out infinite alternate;}
-.hp2{animation:hzoom 16s 2s ease-in-out infinite alternate-reverse;}
-.hp3{animation:hzoom 18s 1s ease-in-out infinite alternate;}
-.hp4{animation:hzoom 15s 3s ease-in-out infinite alternate-reverse;}
-@keyframes hzoom{from{transform:scale(1);}to{transform:scale(1.07);}}
-.hero-overlay{position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 55% 55% at 50% 50%, rgba(13,13,13,.72) 0%, rgba(13,13,13,.35) 55%, rgba(13,13,13,.82) 100%),
-    linear-gradient(to right, rgba(13,13,13,.88) 0%, rgba(13,13,13,.25) 35%, rgba(13,13,13,.25) 65%, rgba(13,13,13,.88) 100%),
-    linear-gradient(to bottom, rgba(13,13,13,.65) 0%, transparent 25%, transparent 75%, rgba(13,13,13,.85) 100%);}
 
 /* TICKER */
 .ticker{position:fixed;top:72px;left:0;right:0;z-index:299;background:var(--org);overflow:hidden;padding:10px 0;}
@@ -129,21 +107,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .ti{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:white;padding:0 24px;white-space:nowrap;}
 .tdot{color:rgba(255,255,255,.4);padding:0 5px;}
 
-
-/* ── INFO STRIP ── */
+/* INFO STRIP */
 .info-strip{background:var(--near);border-bottom:1px solid var(--bs);}
-.info-strip-inner{max-width:1100px;margin:0 auto;display:flex;align-items:stretch;justify-content:center;flex-wrap:nowrap;}
-.info-item{display:flex;align-items:center;gap:14px;padding:18px 32px;flex:1;justify-content:center;}
-.info-icon{font-size:1.5rem;flex-shrink:0;}
-.info-item div{display:flex;flex-direction:column;line-height:1.35;}
+.info-strip-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;}
+.info-item{display:flex;align-items:center;gap:12px;padding:18px 32px;}
+.info-icon{font-size:1.4rem;flex-shrink:0;}
+.info-item div{display:flex;flex-direction:column;line-height:1.3;}
 .info-item strong{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cre);}
 .info-item span,.info-item a{font-size:.82rem;color:var(--mu);}
-.info-divider{width:1px;background:var(--bs);align-self:stretch;flex-shrink:0;}
-@media(max-width:700px){
-  .info-strip-inner{flex-direction:column;align-items:stretch;}
-  .info-divider{width:auto;height:1px;align-self:auto;}
-  .info-item{padding:14px 24px;justify-content:flex-start;}
-}
+.info-divider{width:1px;height:40px;background:var(--bs);}
 
 /* SPECIALS */
 .sec{padding:72px 32px;max-width:1280px;margin:0 auto;}
@@ -203,10 +175,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 
 /* ===== MENU PAGE ===== */
 #page-menu{background:var(--blk);}
-.mh{position:relative;border-bottom:2px solid var(--org);padding:64px 32px 44px;text-align:center;overflow:hidden;}
-.mh::before{content:'';position:absolute;inset:0;background:url('photos/10. MEXICAN SAMPLER.jpg') center/cover no-repeat;opacity:.18;filter:blur(2px);transform:scale(1.05);}
-.mh::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.82) 0%,rgba(13,13,13,.88) 100%);}
-.mh>*{position:relative;z-index:1;}
+.mh{background:linear-gradient(180deg,var(--near),var(--blk));border-bottom:2px solid var(--org);padding:52px 32px 36px;text-align:center;}
 .mh h1{font-family:'Fredoka One',cursive;font-size:clamp(2.8rem,6vw,4.5rem);color:var(--cre);}
 .mh h1 span{color:var(--org);}
 .mh p{font-style:italic;color:var(--mu);margin-top:6px;}
@@ -262,10 +231,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 
 /* ===== ABOUT PAGE ===== */
 #page-about{background:var(--blk);}
-.about-hero{position:relative;border-bottom:2px solid var(--org);padding:72px 32px 48px;text-align:center;overflow:hidden;}
-.about-hero::before{content:'';position:absolute;inset:0;background:url('photos/33. PARRILLADA DE LA CASA.jpg') center/cover no-repeat;opacity:.18;filter:blur(2px);transform:scale(1.05);}
-.about-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.82) 0%,rgba(13,13,13,.88) 100%);}
-.about-hero>*{position:relative;z-index:1;}
+.about-hero{background:linear-gradient(180deg,var(--near),var(--blk));border-bottom:2px solid var(--org);padding:52px 32px 40px;text-align:center;}
 .about-hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2.5rem,5vw,4rem);color:var(--cre);}
 .about-hero h1 span{color:var(--org);}
 .about-body{padding:64px 32px;max-width:960px;margin:0 auto;}
@@ -292,9 +258,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 #page-reservations{background:var(--blk);}
 .rg{min-height:calc(100vh - 72px);display:grid;grid-template-columns:1fr 1fr;}
 .ri{background:var(--near);border-right:1px solid var(--bs);padding:64px 52px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
-.ri::before{content:'';position:absolute;inset:0;background:url('photos/34. EL PATRON.jpg') center/cover no-repeat;opacity:.1;filter:blur(1px);transform:scale(1.03);}
-.ri::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 10% 90%,rgba(240,112,16,.12) 0%,transparent 60%),rgba(20,20,20,.82);}
-.ri-inn{position:relative;z-index:1;}
+.ri::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 10% 90%,rgba(240,112,16,.07) 0%,transparent 60%);}
 .ri-inn{position:relative;}
 .ri h1{font-family:'Fredoka One',cursive;font-size:clamp(2.3rem,4vw,3.6rem);line-height:1;color:var(--cre);margin-bottom:13px;}
 .ri h1 span{color:var(--org);}
@@ -328,10 +292,7 @@ select option{background:var(--blk);}
 
 /* ===== ORDER PAGE ===== */
 #page-order{background:var(--blk);}
-.oh{position:relative;padding:72px 32px 52px;text-align:center;border-bottom:2px solid var(--org);overflow:hidden;}
-.oh::before{content:'';position:absolute;inset:0;background:url('photos/23. MOLCAJETE DE MARISCOS.jpg') center/cover no-repeat;opacity:.2;filter:blur(2px);transform:scale(1.05);}
-.oh::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.82) 0%,rgba(13,13,13,.88) 100%);}
-.oh>*{position:relative;z-index:1;}
+.oh{padding:64px 32px 48px;text-align:center;background:linear-gradient(180deg,var(--near),var(--blk));border-bottom:2px solid var(--org);}
 .oh h1{font-family:'Fredoka One',cursive;font-size:clamp(2.6rem,6vw,4.2rem);color:var(--cre);}
 .oh h1 span{color:var(--org);}
 .oh p{font-style:italic;color:var(--mu);margin-top:7px;max-width:460px;margin-left:auto;margin-right:auto;}
@@ -354,7 +315,7 @@ select option{background:var(--blk);}
 .review-cta{display:grid;gap:18px;margin-top:40px;padding:4px 0;grid-template-columns:repeat(2,minmax(0,1fr));}
 .review-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:16px;}
 .review-card h3{font-size:1.05rem;line-height:1.4;color:var(--cre);}
-.review-card .btn{width:100%;text-align:center;padding:13px 16px;}
+.review-card .btn{width:100%;text-align:center;padding:12px 16px;box-sizing:border-box;}
 .order-find{display:none;margin-top:40px;border-radius:4px;overflow:hidden;}
 .order-find img{width:100%;display:block;border-radius:4px;}
 .onote{border:1px solid var(--bs);padding:28px;border-radius:4px;text-align:center;background:var(--panel);margin-top:20px;}
@@ -363,10 +324,7 @@ select option{background:var(--blk);}
 
 /* ===== PLAY PAGE ===== */
 #page-fun{background:var(--blk);}
-.fh{position:relative;padding:72px 32px 52px;text-align:center;border-bottom:2px solid var(--pnk);overflow:hidden;}
-.fh::before{content:'';position:absolute;inset:0;background:url('photos/29. GIANT MACHETE.jpg') center/cover no-repeat;opacity:.18;filter:blur(2px);transform:scale(1.05);}
-.fh::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.82) 0%,rgba(13,13,13,.88) 100%);}
-.fh>*{position:relative;z-index:1;}
+.fh{padding:64px 32px 46px;text-align:center;background:linear-gradient(180deg,var(--near),var(--blk));border-bottom:2px solid var(--pnk);}
 .fh h1{font-family:'Fredoka One',cursive;font-size:clamp(2.3rem,5vw,4.2rem);color:var(--cre);}
 .fh h1 span{color:var(--yel);}
 .fh p{font-style:italic;color:var(--mu);margin-top:7px;}
@@ -455,74 +413,42 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
 .fb-bot p{font-size:.7rem;color:var(--dim);}
 
 /* RESPONSIVE */
-@media(max-width:768px){
-  .hamburger{display:flex;}
-  .nlinks,.social-label,.social-bar{display:none;}
-}
 @media(max-width:1000px){
-  nav{padding:0 14px;}
-  .nlinks a{padding:5px 8px;font-size:.73rem;}
-  .hero-content{grid-template-columns:1fr;text-align:center;gap:20px;padding:40px 20px;}
+  nav{padding:0 12px;}
+  .nlinks a{padding:5px 7px;font-size:.72rem;}
+  .hero-content{grid-template-columns:1fr;text-align:center;gap:24px;padding:44px 20px;}
   .hero-right{display:none;}.hero-center{order:-1;}
   .hero-left .hero-sub{max-width:100%;}
   .hero-left .hero-btns{justify-content:center;}
-  .hero-logo{width:150px;height:150px;}
-  .hero-hl{font-size:clamp(1.9rem,7vw,3rem);}
-  .hero-photos{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}
+  .hero-logo{width:160px;height:160px;}
   .sp-grid{grid-template-columns:1fr 1fr;}
   .rg{grid-template-columns:1fr;}
-  .ri,.rf{padding:44px 22px;}
+  .ri,.rf{padding:48px 22px;}
   .ft{grid-template-columns:1fr 1fr;gap:22px;}
-  .sec,.ev-wrap{padding:52px 18px;}
-  .gc{padding:26px 20px;}
-  .fb,.ob,.mbody{padding:34px 18px;}
+  .sec,.ev-wrap{padding:56px 18px;}
+  .gc{padding:28px 20px;}
+  .fb,.ob,.mbody{padding:36px 18px;}
   .ev-row{grid-template-columns:1fr;gap:6px;}
   .about-grid{grid-template-columns:1fr;}
   .ab-logo{width:160px;height:160px;margin:0 auto 24px;}
   .about-values{grid-template-columns:1fr 1fr;}
   .bio-inner{grid-template-columns:1fr;text-align:center;}
   .bio-logo{margin:0 auto 24px;}
-  .ly-card{padding:36px 28px;}
-  .mtabs{padding:0 12px;}
-  .mtab{padding:12px 13px;font-size:.74rem;}
-  .mgrid{grid-template-columns:1fr;}
-  .taco-list{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
-  .sp-grid{grid-template-columns:1fr;}
-  .about-values{grid-template-columns:1fr;}
+  .sp-grid,.about-values{grid-template-columns:1fr;}
   .frow{grid-template-columns:1fr;}
+  .ogrid{grid-template-columns:1fr 1fr;}
   .ft{grid-template-columns:1fr;}
-  .mh h1,.oh h1,.fh h1,.about-hero h1{font-size:1.9rem;}
-  /* Order cards — 2 per row, compact */
-  .ogrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .oc{padding:22px 12px;}
-  .oc-icon{font-size:1.9rem;margin-bottom:9px;}
-  .oc-title{font-size:1rem;}
-  .oc-sub{display:none;}
-  /* Review cards stack */
+  .mh h1{font-size:2.2rem;}
   .review-cta{grid-template-columns:1fr;}
-  .review-card .btn{width:100%;}
-  /* Specials */
-  .sp-card{padding:20px 16px;}
-  .sec{padding:40px 14px;}
-  .sec-h2{font-size:1.8rem;}
-  /* Events */
-  .ev-row{padding:14px 14px;}
-  .ev-wrap{padding:44px 14px;}
-  /* Hero */
-  .hero-content{padding:28px 14px;}
-  .hero-hl{font-size:clamp(1.7rem,8vw,2.8rem);}
-  /* Misc */
-  .bio-wrap{padding:44px 14px;}
-  .ly-card{padding:28px 20px;}
-  .ly-big{font-size:3rem;}
-  .fb{padding:26px 12px;}
-  .gc{padding:20px 14px;}
-  .onote{padding:18px 14px;}
-  /* Reservation page stacks */
-  .rg{min-height:auto;}
-  .ri,.rf{padding:36px 18px;}
+  .oc-sub{display:none;}
+  .oc{padding:24px 14px;}
+  .oc-icon{font-size:2rem;}
+}
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nlinks, .social-label, .social-bar{display:none;}
 }
 </style>
 </head>
@@ -546,28 +472,14 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     <a href="#" id="nav-fun"           onclick="showPage('fun');return false;">Play 🎡</a>
     <a href="#" class="ncta"           onclick="showPage('order');return false;">Order Now</a>
   </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#" onclick="showPage('home');closeMobileMenu();return false;">🏠 &nbsp;Home</a>
-    <a href="#" onclick="showPage('menu');closeMobileMenu();return false;">🌮 &nbsp;Menu</a>
-    <a href="#" onclick="showPage('about');closeMobileMenu();return false;">📖 &nbsp;About</a>
-    <a href="#" onclick="showPage('reservations');closeMobileMenu();return false;">📅 &nbsp;Book an Event</a>
-    <a href="#" onclick="showPage('order');closeMobileMenu();return false;">🛵 &nbsp;Order Online</a>
-    <a href="#" onclick="showPage('fun');closeMobileMenu();return false;">🎡 &nbsp;Play &amp; Win</a>
-    <a href="#" class="m-order" onclick="showPage('order');closeMobileMenu();return false;">⭐ &nbsp;Order Now</a>
-    <div style="padding:0 24px;">
-      <div class="mob-social-lbl">Follow Us!</div>
-      <div class="mob-social">
-        <a href="https://www.instagram.com/milltown_texmex_grill/reels/" class="mob-soc-btn" target="_blank" rel="noreferrer noopener" aria-label="Instagram">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M34 6H14a8 8 0 0 0-8 8v20a8 8 0 0 0 8 8h20a8 8 0 0 0 8-8V14a8 8 0 0 0-8-8Zm4 28a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v20Zm-12-20a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 4a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm8-6.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/MilltownTexMexGrill" class="mob-soc-btn" target="_blank" rel="noreferrer noopener" aria-label="Facebook">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M29 16h4.5l.5-4.5H29v-3.5c0-1.1.4-1.5 1.5-1.5H34V4h-4c-4.4 0-7 2.6-7 7v4H18v4.5h5v17H29V20.5h4.5L34 16H29v0Z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@milltowntexmex_grill" class="mob-soc-btn" target="_blank" rel="noreferrer noopener" aria-label="TikTok">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M33 12.5c-1.2 0-2.4-.2-3.5-.6v9.6a10.5 10.5 0 1 1-4.1-8.4v3.7a6.9 6.9 0 1 0 2.7 5.4V11.9c1.2.4 2.4.6 3.6.6 1.1 0 2.1-.2 3.1-.5v5.2a8.3 8.3 0 0 1-1.8.4Z"/></svg>
-        </a>
-      </div>
-    </div>
+  <div class="mobile-menu">
+    <a href="#" onclick="showPage('home');toggleMobileMenu();return false;">Home</a>
+    <a href="#" onclick="showPage('menu');toggleMobileMenu();return false;">Menu</a>
+    <a href="#" onclick="showPage('about');toggleMobileMenu();return false;">About</a>
+    <a href="#" onclick="showPage('reservations');toggleMobileMenu();return false;">Book</a>
+    <a href="#" onclick="showPage('order');toggleMobileMenu();return false;">Order</a>
+    <a href="#" onclick="showPage('fun');toggleMobileMenu();return false;">Play 🎡</a>
+    <a href="#" onclick="showPage('order');toggleMobileMenu();return false;">Order Now</a>
   </div>
   <span class="social-label">Follow Us!</span>
   <div class="social-bar">
@@ -582,32 +494,24 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     </a>
   </div>
 </nav>
-<!-- GLOBAL TICKER — fixed below nav on every page -->
-<div class="ticker" aria-hidden="true">
+<!-- GLOBAL TICKER — fixed below nav, shows on all pages -->
+<div class="ticker">
   <div class="tick-track">
     <span class="ti">🌮 Taco Tuesday — $1 Tacos: Al Pastor · Carnitas · Pollo · Chorizo</span><span class="tdot">✦</span>
-    <span class="ti">🍲 Jueves Pozolero — Pozole Verde, Blanco &amp; Rojo every Thursday</span><span class="tdot">✦</span>
+    <span class="ti">🍲 Jueves Pozolero — Pozole Verde, Blanco &amp; Rojo</span><span class="tdot">✦</span>
     <span class="ti">🥘 Weekend Specials — Caldo de Gallina de Rancho · Mole de Gallina · Barbacoa de Res</span><span class="tdot">✦</span>
     <span class="ti">🍳 Breakfast All Day, Every Day!</span><span class="tdot">✦</span>
     <span class="ti">🌮 Taco Tuesday — $1 Tacos: Al Pastor · Carnitas · Pollo · Chorizo</span><span class="tdot">✦</span>
-    <span class="ti">🍲 Jueves Pozolero — Pozole Verde, Blanco &amp; Rojo every Thursday</span><span class="tdot">✦</span>
+    <span class="ti">🍲 Jueves Pozolero — Pozole Verde, Blanco &amp; Rojo</span><span class="tdot">✦</span>
     <span class="ti">🥘 Weekend Specials — Caldo de Gallina de Rancho · Mole de Gallina · Barbacoa de Res</span><span class="tdot">✦</span>
-    <span class="ti">🍳 Cinco de Mayo Specials!</span><span class="tdot">✦</span>
+    <span class="ti">🍳 Breakfast All Day, Every Day!</span><span class="tdot">✦</span>
   </div>
 </div>
 
 <!-- ════════════ HOME ════════════ -->
 <div id="page-home" class="page active">
   <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-photos">
-        <img src="photos/20. BIRRIA TACOS.jpg"              class="hp hp1" alt="">
-        <img src="photos/23. MOLCAJETE DE MARISCOS.jpg"     class="hp hp2" alt="">
-        <img src="photos/33. PARRILLADA DE LA CASA.jpg"     class="hp hp3" alt="">
-        <img src="photos/1. CHILAQUILES.jpg"                class="hp hp4" alt="">
-      </div>
-      <div class="hero-overlay"></div>
-    </div>
+    <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="hero-left">
         <p class="ey ey-o">Est. Right Here in Milltown</p>
@@ -646,7 +550,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
       <div class="info-divider"></div>
       <div class="info-item">
         <span class="info-icon">📞</span>
-        <div><strong>Call Us</strong><a href="tel:+17323174464">(732) 317-4464</a></div>
+        <div><strong>Call Us</strong><a href="tel:+17323174464" style="color:var(--yel);text-decoration:none;">(732) 317-4464</a></div>
       </div>
     </div>
   </div>
@@ -764,7 +668,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     <div class="ft">
       <div class="fb-brand"><img src="photos/LOGO.jpg" alt="Milltown Logo"><p>Bold flavors, real community, cold drinks. Come hungry. Leave happy.</p></div>
       <div class="fc"><h4>Hours</h4><p>Mon–Wed: 9AM – 8PM</p><p>Thu–Sat: 9AM – 10PM</p><p>Sunday: 9AM – 7PM</p></div>
-      <div class="fc"><h4>Visit Us</h4><p>123 Main St, Milltown</p><p>(732) 317-4464</p><a href="#">hello@milltowntexmex.com</a></div>
+      <div class="fc"><h4>Visit Us</h4><p>123 Main St, Milltown</p><p>(732) 317-4464</p><a href="#">milltowntexmex.com</a></div>
       <div class="fc"><h4>Follow</h4><a href="https://www.instagram.com/milltown_texmex_grill/reels/" target="_blank" rel="noreferrer noopener">Instagram</a><a href="https://www.facebook.com/MilltownTexMexGrill" target="_blank" rel="noreferrer noopener">Facebook</a><a href="https://www.tiktok.com/@milltowntexmex_grill" target="_blank" rel="noreferrer noopener">TikTok</a></div>
     </div>
     <div class="fb-bot"><p>© 2025 Milltown Tex Mex &amp; Grill. All rights reserved.</p><p>Made with 🌶️ in Milltown</p></div>
@@ -1758,16 +1662,11 @@ function showPage(p){
   document.getElementById('page-'+p).classList.add('active');
   const n=document.getElementById('nav-'+p);if(n)n.classList.add('active');
   window.scrollTo(0,0);
-  closeMobileMenu();
+  const mm=document.getElementById('mobile-menu');if(mm)mm.classList.remove('open');
   if(p==='fun'){setTimeout(initW,80);setTimeout(initTV,80);setTimeout(initQ,80);}
 }
-function closeMobileMenu(){
-  const mm=document.getElementById('mobile-menu');
-  if(mm)mm.classList.remove('open');
-}
 function toggleMobileMenu(){
-  const mm=document.getElementById('mobile-menu');
-  if(mm)mm.classList.toggle('open');
+  document.querySelector('.mobile-menu').classList.toggle('open');
 }
 /* ── MENU CARDS ── */
 function toggleCard(el){
@@ -1951,16 +1850,17 @@ function rstQ(){initQ();}
 window.addEventListener('load',()=>{
   const today=new Date().toISOString().split('T')[0];
   const de=document.getElementById('rdate');if(de)de.min=today;
-  // Live open/closed status
-  (function(){
-    const hrs=[{o:9,c:19},{o:9,c:20},{o:9,c:20},{o:9,c:20},{o:9,c:22},{o:9,c:22},{o:9,c:22}];
-    const now=new Date(),day=now.getDay(),h=now.getHours();
-    const t=hrs[day],isOpen=h>=t.o&&h<t.c;
-    const closeStr=t.c>12?(t.c-12)+':00 PM':t.c+':00 AM';
-    const el=document.getElementById('open-status');
-    if(el){el.textContent=isOpen?'Open until '+closeStr:'Closed · Opens 9 AM';
-           el.style.color=isOpen?'#6abf6a':'#e06060';}
-  })();
+  // Set open status in info strip
+  const hours=[
+    {o:9,c:19},{o:9,c:20},{o:9,c:20},{o:9,c:20},{o:9,c:22},{o:9,c:22},{o:9,c:22}
+  ];
+  const nowH=new Date();
+  const dayH=nowH.getDay(),hH=nowH.getHours();
+  const todayH=hours[dayH];
+  const isOpen=hH>=todayH.o&&hH<todayH.c;
+  const closeH=todayH.c>12?(todayH.c-12)+':00 PM':todayH.c+':00 AM';
+  const elH=document.getElementById('open-status');
+  if(elH){elH.textContent=isOpen?'Open until '+closeH:'Closed · Opens 9:00 AM';elH.style.color=isOpen?'#5cb85c':'#e05050';}
 });
 </script>
 </body>
