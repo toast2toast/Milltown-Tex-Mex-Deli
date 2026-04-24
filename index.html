@@ -38,7 +38,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .nlinks a:hover{color:var(--yel);border-color:var(--bs);}
 .nlinks a.active{color:var(--org);border-color:rgba(240,112,16,.3);}
 .social-bar{display:flex;align-items:center;gap:10px;margin-left:6px;}
-.social-bar a{width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);text-decoration:none;transition:transform .2s,background .2s;}
+.social-bar a{width:60px;height:60px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);text-decoration:none;transition:transform .2s,background .2s;overflow:hidden;padding:4px;}
 .social-bar a:hover{background:rgba(240,192,32,.15);transform:translateY(-2px);}
 .social-bar svg{width:18px;height:18px;fill:var(--blk);}
 .social-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);margin-left:6px;}
@@ -58,7 +58,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .mobile-menu a.m-order{color:var(--org);font-size:1.05rem;}
 .mob-social{display:flex;align-items:center;justify-content:center;gap:16px;padding:18px 0 4px;margin-top:4px;border-top:1px solid rgba(245,237,216,.1);}
 .mob-social-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mu);text-align:center;padding:0 0 10px;}
-.mob-soc-btn{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);text-decoration:none;transition:all .25s;}
+.mob-soc-btn{width:60px;height:60px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);text-decoration:none;transition:all .25s;overflow:hidden;padding:4px;}
 .mob-soc-btn:hover{background:rgba(240,112,16,.25);border-color:var(--org);transform:scale(1.1);}
 .mob-soc-btn svg{width:22px;height:22px;fill:var(--blk);}
 .mobile-menu.open{display:block;}
@@ -129,8 +129,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .ticker::after{right:0;background:linear-gradient(to left,var(--org),transparent);}
 .tick-track{display:flex;width:max-content;animation:tick 38s linear infinite;}
 @keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.ti{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:white;padding:0 24px;white-space:nowrap;}
-.tdot{color:rgba(255,255,255,.4);padding:0 5px;}
+.ti{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;color:white;padding:0 28px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;}
+.tdot{color:rgba(255,255,255,.45);padding:0 4px;font-size:.9rem;}
 
 
 /* ── INFO STRIP ── */
@@ -156,17 +156,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .sp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--bs);border:1px solid var(--bs);}
 .sp-card{background:var(--panel);padding:30px 22px;position:relative;overflow:hidden;transition:all .3s;}
 .sp-card:hover{background:var(--card);}
-.sp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .35s;}
-.sp-card:nth-child(1)::after{background:var(--pnk)}.sp-card:nth-child(2)::after{background:var(--org)}
-.sp-card:nth-child(3)::after{background:var(--cyn)}.sp-card:nth-child(4)::after{background:var(--yel)}
-.sp-card:nth-child(5)::after{background:var(--grn)}.sp-card:nth-child(6)::after{background:var(--red)}
+.sp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .45s ease;background:var(--card-color,var(--org));}
 .sp-card:hover::after{transform:scaleX(1);}
 .sp-day{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;margin-bottom:8px;}
 .sp-name{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--cre);margin-bottom:8px;line-height:1.1;}
 .sp-desc{font-size:.82rem;color:var(--mu);line-height:1.6;font-style:italic;margin-bottom:14px;}
 .sp-items{display:flex;flex-direction:column;gap:3px;}
 .sp-item{font-size:.82rem;color:rgba(245,237,216,.75);}
-.sp-badge{position:absolute;top:14px;right:14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:3px 8px;}
+.sp-badge{position:absolute;top:14px;right:14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;border-radius:2px;text-decoration:none;display:inline-block;}
+.sp-badge-link{cursor:pointer;background-size:200% 100%;background-position:right center;transition:background-position .45s ease,color .45s ease,border-color .45s ease;}
+.sp-badge-link.badge-pnk{background-image:linear-gradient(to right,var(--pnk) 50%,rgba(232,24,106,.14) 50%);color:var(--pnk);border:1px solid rgba(232,24,106,.3);}
+.sp-badge-link.badge-org{background-image:linear-gradient(to right,var(--org) 50%,rgba(240,112,16,.14) 50%);color:var(--org);border:1px solid rgba(240,112,16,.3);}
+.sp-badge-link.badge-yel{background-image:linear-gradient(to right,var(--yel) 50%,rgba(240,192,32,.14) 50%);color:var(--yel);border:1px solid rgba(240,192,32,.3);}
+.sp-badge-link.badge-cyn{background-image:linear-gradient(to right,var(--cyn) 50%,rgba(24,180,216,.14) 50%);color:var(--cyn);border:1px solid rgba(24,180,216,.3);}
+.sp-badge-link.badge-grn{background-image:linear-gradient(to right,var(--grn) 50%,rgba(42,136,64,.14) 50%);color:var(--grn);border:1px solid rgba(42,136,64,.3);}
+.sp-badge-link.badge-red{background-image:linear-gradient(to right,var(--red) 50%,rgba(204,32,32,.14) 50%);color:var(--red);border:1px solid rgba(204,32,32,.3);}
 
 /* EVENTS */
 .ev-wrap{background:var(--near);border-top:1px solid var(--bs);border-bottom:1px solid var(--bs);padding:72px 32px;}
@@ -178,9 +182,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .ev-when small{display:block;font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;color:var(--mu);margin-top:2px;}
 .ev-name{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--cre);margin-bottom:3px;}
 .ev-det{font-size:.8rem;color:var(--mu);font-style:italic;}
-.badge{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;border:1px solid;white-space:nowrap;border-radius:2px;}
-.b-o{color:var(--org);border-color:var(--org)}.b-p{color:var(--pnk);border-color:var(--pnk)}
-.b-y{color:var(--yel);border-color:var(--yel)}.b-c{color:var(--cyn);border-color:var(--cyn)}.b-g{color:var(--grn);border-color:var(--grn)}
+/* ── CALENDAR BADGE LINKS ── */
+.badge{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;border:1px solid;white-space:nowrap;border-radius:2px;text-decoration:none;display:inline-block;background-size:200% 100%;background-position:right center;transition:background-position .45s ease,color .45s ease,border-color .45s ease;cursor:pointer;}
+.b-o{color:var(--org);border-color:var(--org);background-image:linear-gradient(to right,var(--org) 50%,transparent 50%);}
+.b-p{color:var(--pnk);border-color:var(--pnk);background-image:linear-gradient(to right,var(--pnk) 50%,transparent 50%);}
+.b-y{color:var(--yel);border-color:var(--yel);background-image:linear-gradient(to right,var(--yel) 50%,transparent 50%);}
+.b-c{color:var(--cyn);border-color:var(--cyn);background-image:linear-gradient(to right,var(--cyn) 50%,transparent 50%);}
+.b-g{color:var(--grn);border-color:var(--grn);background-image:linear-gradient(to right,var(--grn) 50%,transparent 50%);}
+.badge:hover{background-position:left center;color:#111!important;border-color:transparent!important;}
+.badge:hover{background-position:left center;color:#111!important;border-color:transparent!important;}
+.sp-badge-link:hover{background-position:left center;color:#111!important;border-color:transparent!important;}
+
 
 /* BIO */
 .bio-wrap{padding:72px 32px;background:var(--blk);}
@@ -364,6 +376,35 @@ select option{background:var(--blk);}
 .onote p{font-style:italic;color:var(--mu);font-size:.86rem;line-height:1.7;}
 .onote strong{color:var(--yel);font-style:normal;}
 
+
+/* ── REVIEW CARDS ── */
+.review-platform-title{font-family:'Fredoka One',cursive;font-size:1.9rem;font-weight:700;line-height:1.1;margin-bottom:8px;letter-spacing:.01em;}
+.review-sub{font-size:.88rem;color:var(--mu);font-style:italic;line-height:1.5;margin-bottom:4px;}
+.review-btn{display:block;width:100%;text-align:center;padding:14px 16px;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;background-size:200% 100%;background-position:right center;transition:background-position .45s ease,color .45s ease,box-shadow .3s ease;border:2px solid;}
+.review-btn-pnk{background-image:linear-gradient(to right,var(--pnk) 50%,transparent 50%);color:var(--pnk);border-color:var(--pnk);}
+.review-btn-yel{background-image:linear-gradient(to right,var(--yel) 50%,transparent 50%);color:var(--yel);border-color:var(--yel);}
+.review-btn:hover{background-position:left center;color:#111!important;border-color:transparent!important;box-shadow:0 6px 20px rgba(0,0,0,.3);}
+
+
+/* ── TACO CATCH GAME ── */
+#taco-game{width:100%;max-width:520px;margin:0 auto;}
+#tg-header{display:flex;justify-content:space-around;align-items:center;padding:10px 0 16px;border-bottom:1px solid var(--bs);margin-bottom:12px;}
+.tg-stat{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.tg-label{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);}
+.tg-num{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--yel);}
+#tg-arena{position:relative;width:100%;height:320px;background:rgba(0,0,0,.25);border-radius:8px;overflow:hidden;border:1px solid var(--bs);cursor:pointer;user-select:none;-webkit-user-select:none;}
+#tg-start-screen,#tg-gameover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;z-index:10;}
+.tg-item{position:absolute;font-size:2.2rem;cursor:pointer;user-select:none;-webkit-user-select:none;transition:transform .1s;line-height:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4));}
+.tg-item:active{transform:scale(1.3);}
+.tg-caught{animation:tcPop .25s ease forwards;}
+@keyframes tcPop{0%{transform:scale(1);}50%{transform:scale(1.5);}100%{transform:scale(0);opacity:0;}}
+.tg-miss{animation:tcMiss .3s ease forwards;}
+@keyframes tcMiss{0%{opacity:1;}100%{transform:translateY(30px);opacity:0;}}
+#tg-combo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Fredoka One',cursive;font-size:1.8rem;color:var(--yel);text-shadow:0 0 10px rgba(240,192,32,.6);pointer-events:none;opacity:0;z-index:20;}
+#tg-combo.show{animation:comboFlash .6s ease forwards;}
+@keyframes comboFlash{0%{opacity:1;transform:translate(-50%,-50%) scale(1.2);}100%{opacity:0;transform:translate(-50%,-80%) scale(0.8);}}
+@media(max-width:600px){#tg-arena{height:280px;}.tg-item{font-size:2rem;}}
+
 /* ===== PLAY PAGE ===== */
 #page-fun{background:var(--blk);}
 .fh{position:relative;padding:72px 32px 52px;text-align:center;border-bottom:2px solid var(--pnk);overflow:hidden;}
@@ -541,33 +582,33 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     <span></span><span></span><span></span>
   </div>
   <div class="nlinks">
-    <a href="#" id="nav-home" class="active" onclick="showPage('home');return false;">Home</a>
-    <a href="#" id="nav-menu"          onclick="showPage('menu');return false;">Menu</a>
-    <a href="#" id="nav-about"         onclick="showPage('about');return false;">About</a>
-    <a href="#" id="nav-reservations"  onclick="showPage('reservations');return false;">Book</a>
-    <a href="#" id="nav-order"         onclick="showPage('order');return false;">Order</a>
-    <a href="#" id="nav-fun"           onclick="showPage('fun');return false;">Play 🎡</a>
-    <a href="#" class="ncta"           onclick="showPage('order');return false;">Order Now</a>
+    <a href="javascript:void(0)" id="nav-home" class="active" onclick="showPage('home');return false;">Home</a>
+    <a href="javascript:void(0)" id="nav-menu"          onclick="showPage('menu');return false;">Menu</a>
+    <a href="javascript:void(0)" id="nav-about"         onclick="showPage('about');return false;">About</a>
+    <a href="javascript:void(0)" id="nav-reservations"  onclick="showPage('reservations');return false;">Book</a>
+    <a href="javascript:void(0)" id="nav-order"         onclick="showPage('order');return false;">Order</a>
+    <a href="javascript:void(0)" id="nav-fun"           onclick="showPage('fun');return false;">Play</a>
+    <a href="tel:+17323174464" class="ncta">📞 Call Now</a>
   </div>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#" onclick="showPage('home');closeMobileMenu();return false;">🏠 &nbsp;Home</a>
-    <a href="#" onclick="showPage('menu');closeMobileMenu();return false;">🌮 &nbsp;Menu</a>
-    <a href="#" onclick="showPage('about');closeMobileMenu();return false;">📖 &nbsp;About</a>
-    <a href="#" onclick="showPage('reservations');closeMobileMenu();return false;">📅 &nbsp;Book an Event</a>
-    <a href="#" onclick="showPage('order');closeMobileMenu();return false;">🛵 &nbsp;Order Online</a>
-    <a href="#" onclick="showPage('fun');closeMobileMenu();return false;">🎡 &nbsp;Play &amp; Win</a>
-    <a href="#" class="m-order" onclick="showPage('order');closeMobileMenu();return false;">⭐ &nbsp;Order Now</a>
+    <a href="javascript:void(0)" onclick="showPage('home');closeMobileMenu();return false;">🏠 &nbsp;Home</a>
+    <a href="javascript:void(0)" onclick="showPage('menu');closeMobileMenu();return false;">🌮 &nbsp;Menu</a>
+    <a href="javascript:void(0)" onclick="showPage('about');closeMobileMenu();return false;">📖 &nbsp;About</a>
+    <a href="tel:+17323174464" class="m-order" style="background:var(--org);color:white;border-radius:4px;margin:4px 16px;padding:15px 24px;font-size:1.1rem;justify-content:center;">📞 &nbsp;ORDER NOW</a>
+    <a href="javascript:void(0)" onclick="showPage('order');closeMobileMenu();return false;">🛵 &nbsp;Order Online</a>
+    <a href="javascript:void(0)" onclick="showPage('fun');closeMobileMenu();return false;">🎡 &nbsp;Play</a>
+    
     <div style="padding:0 24px;">
       <div class="mob-social-lbl">Follow Us!</div>
       <div class="mob-social">
         <a href="https://www.instagram.com/milltown_texmex_grill/reels/" class="mob-soc-btn" target="_blank" rel="noreferrer noopener" aria-label="Instagram">
-          <img src="photos/Instagram-Logo.png" alt="Instagram" style="width:36px;height:36px;">
+          <img src="photos/Instagram-Logo.png" alt="Instagram" style="width:100%;height:100%;object-fit:contain;">
         </a>
         <a href="https://www.facebook.com/MilltownTexMexGrill" class="mob-soc-btn" target="_blank" rel="noreferrer noopener" aria-label="Facebook">
-          <img src="photos/Facebook-Logo.PNG" alt="Facebook" style="width:46px;height:46px;">
+          <img src="photos/Facebook-Logo.PNG" alt="Facebook" style="width:100%;height:100%;object-fit:contain;">
         </a>
         <a href="https://www.tiktok.com/@milltowntexmex_grill" class="mob-soc-btn" target="_blank" rel="noreferrer noopener" aria-label="TikTok">
-          <img src="photos/tiktok-logo-transparent.png" alt="TikTok" style="width:56px;height:56px;">
+          <img src="photos/tiktok-logo-transparent.png" alt="TikTok" style="width:100%;height:100%;object-fit:contain;">
         </a>
       </div>
     </div>
@@ -575,27 +616,27 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
   <span class="social-label">Follow Us!</span>
   <div class="social-bar">
     <a href="https://www.instagram.com/milltown_texmex_grill/reels/" target="_blank" rel="noreferrer noopener" aria-label="Instagram">
-      <img src="photos/Instagram-Logo.png" alt="Instagram" style="width:28px;height:28px;">
+      <img src="photos/Instagram-Logo.png" alt="Instagram" style="width:100%;height:100%;object-fit:contain;">
     </a>
     <a href="https://www.facebook.com/MilltownTexMexGrill" target="_blank" rel="noreferrer noopener" aria-label="Facebook">
-      <img src="photos/Facebook-Logo.PNG" alt="Facebook" style="width:38px;height:38px;">
+      <img src="photos/Facebook-Logo.PNG" alt="Facebook" style="width:100%;height:100%;object-fit:contain;">
     </a>
     <a href="https://www.tiktok.com/@milltowntexmex_grill" target="_blank" rel="noreferrer noopener" aria-label="TikTok">
-      <img src="photos/tiktok-logo-transparent.png" alt="TikTok" style="width:48px;height:48px;">
+      <img src="photos/tiktok-logo-transparent.png" alt="TikTok" style="width:100%;height:100%;object-fit:contain;">
     </a>
   </div>
 </nav>
 <!-- GLOBAL TICKER — fixed below nav on every page -->
 <div class="ticker" aria-hidden="true">
-  <div class="tick-track">
-    <span class="ti">🌮 Taco Tuesday — $1 Tacos: Al Pastor · Carnitas · Pollo · Chorizo</span><span class="tdot">✦</span>
-    <span class="ti">🍲 Jueves Pozolero — Pozole Verde, Blanco &amp; Rojo every Thursday</span><span class="tdot">✦</span>
-    <span class="ti">🥘 Weekend Specials — Caldo de Gallina de Rancho · Mole de Gallina · Barbacoa de Res</span><span class="tdot">✦</span>
-    <span class="ti">🍳 Cinco de Mayo Specials!</span><span class="tdot">✦</span>
-    <span class="ti">🌮 Taco Tuesday — $1 Tacos: Al Pastor · Carnitas · Pollo · Chorizo</span><span class="tdot">✦</span>
-    <span class="ti">🍲 Jueves Pozolero — Pozole Verde, Blanco &amp; Rojo every Thursday</span><span class="tdot">✦</span>
-    <span class="ti">🥘 Weekend Specials — Caldo de Gallina de Rancho · Mole de Gallina · Barbacoa de Res</span><span class="tdot">✦</span>
-    <span class="ti">🍳 Cinco de Mayo Specials!</span><span class="tdot">✦</span>
+    <div class="tick-track">
+    <span class="ti">🌮 Taco Tuesday &mdash; $1 Tacos: Al Pastor &middot; Carnitas &middot; Pollo &middot; Chorizo</span><span class="tdot">✦</span>
+    <span class="ti">🍲 Jueves Pozolero &mdash; Pozole Verde, Blanco &amp; Rojo Every Thursday</span><span class="tdot">✦</span>
+    <span class="ti">🥘 Weekend Specials &mdash; Caldo de Gallina &middot; Mole de Gallina &middot; Barbacoa de Res</span><span class="tdot">✦</span>
+    <span class="ti">🍳 Breakfast All Day, Every Day &mdash; Open to Close!</span><span class="tdot">✦</span>
+    <span class="ti">🌮 Taco Tuesday &mdash; $1 Tacos: Al Pastor &middot; Carnitas &middot; Pollo &middot; Chorizo</span><span class="tdot">✦</span>
+    <span class="ti">🍲 Jueves Pozolero &mdash; Pozole Verde, Blanco &amp; Rojo Every Thursday</span><span class="tdot">✦</span>
+    <span class="ti">🥘 Weekend Specials &mdash; Caldo de Gallina &middot; Mole de Gallina &middot; Barbacoa de Res</span><span class="tdot">✦</span>
+    <span class="ti">🍳 Breakfast All Day, Every Day &mdash; Open to Close!</span><span class="tdot">✦</span>
   </div>
 </div>
 
@@ -619,7 +660,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
         <p class="hero-sub">Part taqueria, part grill, part breakfast spot. All real. Generous portions of food that hits the mark — every single time...</p>
         <div class="hero-btns">
           <button class="btn btn-o" onclick="showPage('menu')">See the Menu</button>
-          <button class="btn btn-yl" onclick="showPage('reservations')">Book an Event</button>
+          <a href="tel:+17323174464" class="btn btn-o">📞 Order Now</a>
         </div>
       </div>
       <div class="hero-center"><img src="photos/LOGO.jpg" alt="Milltown Tex Mex &amp; Grill" class="hero-logo"></div>
@@ -628,7 +669,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
         <div class="hero-stat"><div class="hs-num" style="color:var(--pnk)">🍲</div><div class="hs-lbl">Pozolero Thursdays</div></div>
         <div class="hero-stat"><div class="hs-num" style="color:var(--cyn)">🥘</div><div class="hs-lbl">Weekend Rancho Specials</div></div>
         <p class="hero-sub">Real flavors, big portions, a menu that reflects how people actually eat. Come for tacos, stay for everything else.</p>
-        <div class="hero-btns"><button class="btn btn-pk" onclick="showPage('fun')">Play &amp; Win 🎡</button></div>
+        <div class="hero-btns"><button class="btn btn-pk" onclick="showPage('fun')">Play 🎡</button></div>
       </div>
     </div>
   </section>
@@ -662,7 +703,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
       <div class="div-o"></div>
     </div>
     <div class="sp-grid">
-      <div class="sp-card">
+      <div class="sp-card" style="--card-color:var(--pnk)">
         <div class="sp-day" style="color:var(--pnk)">Every Tuesday</div>
         <div class="sp-name">🌮 Taco Tuesday</div>
         <div class="sp-desc">$1 tacos all day on these classic proteins — Take your $20 taco box to share with la familia!</div>
@@ -670,9 +711,9 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
           <span class="sp-item">✦ Al Pastor</span><span class="sp-item">✦ Carnitas</span>
           <span class="sp-item">✦ Pollo</span><span class="sp-item">✦ Chorizo</span>
         </div>
-        <div class="sp-badge" style="background:rgba(232,24,106,.14);color:var(--pnk);border:1px solid rgba(232,24,106,.3);">$1 Each</div>
+        <a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="sp-badge sp-badge-link badge-pnk">$1 Each</a>
       </div>
-      <div class="sp-card">
+      <div class="sp-card" style="--card-color:var(--org)">
         <div class="sp-day" style="color:var(--org)">Every Thursday</div>
         <div class="sp-name">🍲 Jueves Pozolero</div>
         <div class="sp-desc">Thursdays are dedicated to our rich, slow-cooked pozole — choose your color.</div>
@@ -680,9 +721,9 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
           <span class="sp-item">✦ Pozole Verde</span><span class="sp-item">✦ Pozole Blanco</span>
           <span class="sp-item">✦ Pozole Rojo</span>
         </div>
-        <div class="sp-badge" style="background:rgba(240,112,16,.14);color:var(--org);border:1px solid rgba(240,112,16,.3);">Thurs Only</div>
+        <a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="sp-badge sp-badge-link badge-org">Thurs Only</a>
       </div>
-      <div class="sp-card">
+      <div class="sp-card" style="--card-color:var(--yel)">
         <div class="sp-day" style="color:var(--yel)">Weekends</div>
         <div class="sp-name">🥘 Rancho Weekend</div>
         <div class="sp-desc">Saturdays &amp; Sundays we bring out the Rancho-style dishes you can't get on weekdays.</div>
@@ -693,10 +734,22 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
           <span class="sp-item">✦ Chuletas en Adobo</span>
           <span class="sp-item">✦ Tortas de Camarón</span>
         </div>
-        <div class="sp-badge" style="background:rgba(240,192,32,.14);color:var(--yel);border:1px solid rgba(240,192,32,.3);">Sat &amp; Sun</div>
+        <a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="sp-badge sp-badge-link badge-yel">Sat &amp; Sun</a>
       </div>
-      <div class="sp-card">
-        <div class="sp-day" style="color:var(--cyn)">Every Day</div>
+          </div>
+  </div>
+
+
+  <!-- EVERYDAY FAVORITES -->
+  <div class="sec" style="padding-top:0;">
+    <div class="sec-head">
+      <p class="ey ey-o">Available Every Single Day</p>
+      <h2 class="sec-h2">🔥 Everyday <span style="color:var(--org)">Favorites</span></h2>
+      <div class="div-o"></div>
+    </div>
+    <div class="sp-grid">
+      <div class="sp-card" style="--card-color:var(--cyn)">
+        <div class="sp-day" style="color:var(--cyn)">Every Day &mdash; Open to Close</div>
         <div class="sp-name">🍳 Breakfast All Day</div>
         <div class="sp-desc">Don't look at the clock. We serve the full breakfast menu from open to close, any day.</div>
         <div class="sp-items">
@@ -704,10 +757,10 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
           <span class="sp-item">✦ Pancakes &amp; French Toast</span>
           <span class="sp-item">✦ Breakfast Burritos &amp; Tacos</span>
         </div>
-        <div class="sp-badge" style="background:rgba(24,180,216,.14);color:var(--cyn);border:1px solid rgba(24,180,216,.3);">All Day</div>
+        <a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="sp-badge sp-badge-link badge-cyn">All Day</a>
       </div>
-      <div class="sp-card">
-        <div class="sp-day" style="color:var(--grn)">House Specialty</div>
+      <div class="sp-card" style="--card-color:var(--grn)">
+        <div class="sp-day" style="color:var(--grn)">House Specialty &mdash; Always Available</div>
         <div class="sp-name">🔥 Birria House</div>
         <div class="sp-desc">Our slow-braised birria is a labor of love. Tacos, quesabirria, burritos, or... Ramen? — your call.</div>
         <div class="sp-items">
@@ -715,9 +768,10 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
           <span class="sp-item">✦ Quesabirria — $18.95</span>
           <span class="sp-item">✦ Ramen Birria — $13.95</span>
         </div>
+        <a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="sp-badge sp-badge-link badge-grn">Must Try</a>
       </div>
-      <div class="sp-card">
-        <div class="sp-day" style="color:var(--red)">Fan Favorites</div>
+      <div class="sp-card" style="--card-color:var(--red)">
+        <div class="sp-day" style="color:var(--red)">Fan Favorites &mdash; Always on the Menu</div>
         <div class="sp-name">🏆 Must-Try Plates</div>
         <div class="sp-desc">These are the dishes regulars keep coming back for, week after week.</div>
         <div class="sp-items">
@@ -726,6 +780,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
           <span class="sp-item">✦ El Patrón (Steak &amp; Shrimp)</span>
           <span class="sp-item">✦ Parrillada de la Casa</span>
         </div>
+        <a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="sp-badge sp-badge-link badge-red">Fan Faves</a>
       </div>
     </div>
   </div>
@@ -737,11 +792,11 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
       <h2 class="sec-h2">What's <span style="color:var(--yel)">Happening</span></h2>
       <div style="width:50px;height:3px;border-radius:2px;background:var(--yel);margin:12px 0 0;"></div>
       <div class="ev-list">
-        <div class="ev-row"><div class="ev-when" style="color:var(--pnk)">Tuesday<small>All Day</small></div><div><div class="ev-name">Taco Tuesday — $1 Tacos</div><div class="ev-det">Al Pastor, Carnitas, Pollo, Chorizo. No limit. Show up hungry.</div></div><span class="badge b-p">$1 Each</span></div>
-        <div class="ev-row"><div class="ev-when" style="color:var(--org)">Thursday<small>All Day</small></div><div><div class="ev-name">Jueves Pozolero</div><div class="ev-det">Full pozole menu — Verde, Blanco, and Rojo. Rich broth, big bowls.</div></div><span class="badge b-o">Thurs Only</span></div>
-        <div class="ev-row"><div class="ev-when" style="color:var(--yel)">Saturday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Begins</div><div class="ev-det">Caldo de Gallina de Rancho, Mole de Gallina, Barbacoa de Res, Chuletas en Adobo, Tortas de Camarón.</div></div><span class="badge b-y">Weekend</span></div>
-        <div class="ev-row"><div class="ev-when" style="color:var(--grn)">Sunday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Continues</div><div class="ev-det">All weekend specials available. Plus our full Sunday breakfast menu from open.</div></div><span class="badge b-g">Weekend</span></div>
-        <div class="ev-row"><div class="ev-when" style="color:var(--cyn)">May 5th<small>Open to Close</small></div><div><div class="ev-name">Cinco De Mayo!</div><div class="ev-det">Come see what we have in store for you!</div></div><span class="badge b-c">May 5 Only</span></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--pnk)">Tuesday<small>All Day</small></div><div><div class="ev-name">Taco Tuesday — $1 Tacos</div><div class="ev-det">Al Pastor, Carnitas, Pollo, Chorizo. No limit. Show up hungry.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-p">$1 Each</a></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--org)">Thursday<small>All Day</small></div><div><div class="ev-name">Jueves Pozolero</div><div class="ev-det">Full pozole menu — Verde, Blanco, and Rojo. Rich broth, big bowls.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-o">Thurs Only</a></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--yel)">Saturday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Begins</div><div class="ev-det">Caldo de Gallina de Rancho, Mole de Gallina, Barbacoa de Res, Chuletas en Adobo, Tortas de Camarón.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-y">Weekend</a></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--grn)">Sunday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Continues</div><div class="ev-det">All weekend specials available. Plus our full Sunday breakfast menu from open.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-g">Weekend</a></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--cyn)">May 5th<small>Open to Close</small></div><div><div class="ev-name">Cinco De Mayo!</div><div class="ev-det">Come see what we have in store for you!</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-c">May 5 Only</a></div>
       </div>
     </div>
   </div>
@@ -1680,14 +1735,14 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     </div>
     <div class="review-cta">
       <div class="review-card">
-        <p class="ey ey-o" style="margin-bottom:6px;">Find us on Yelp!</p>
-        <h3>Support our business by giving us a 5-star review!</h3>
-        <a href="https://www.yelp.com/biz/milltown-tex-mex-deli-milltown" class="btn btn-pk" target="_blank" rel="noreferrer noopener">Leave a Yelp Review</a>
+        <p class="review-platform-title" style="color:var(--pnk);">⭐ Find Us on Yelp!</p>
+        <p class="review-sub">Support our small business by leaving us a 5-star review!</p>
+        <a href="https://www.yelp.com/biz/milltown-tex-mex-deli-milltown" class="btn review-btn review-btn-pnk" target="_blank" rel="noreferrer noopener">Leave a Yelp Review ↗</a>
       </div>
-      <div class="review-card">
-        <p class="ey ey-o" style="margin-bottom:6px;">Find us on Google!</p>
-        <h3>Don't forget to support our business by giving us a 5-star review!</h3>
-        <a href="https://www.google.com/search?q=milltown+tex+mex&rlz=1C1HKFL_enUS1202US1202&oq=milltown+tex+mex&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQIxgnMhAIAhAuGK8BGMcBGIAEGI4FMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMggIBhAAGBYYHjIICAcQABgWGB4yCAgIEAAYFhgeMgoICRAAGAoYFhge0gEJOTQ0NmowajE1qAIIsAIB8QUHhd7pzoNtag&sourceid=chrome&ie=UTF-8" class="btn btn-y" target="_blank" rel="noreferrer noopener">Leave a Google Review</a>
+            <div class="review-card">
+        <p class="review-platform-title" style="color:var(--yel);">⭐ Find Us on Google!</p>
+        <p class="review-sub">Don't forget to support our business by giving us a 5-star review!</p>
+        <a href="https://www.google.com/search?q=milltown+tex+mex+grill+milltown+nj" class="btn review-btn review-btn-yel" target="_blank" rel="noreferrer noopener">Leave a Google Review ↗</a>
       </div>
     </div>
     <div class="onote"><p><strong>Pickup is always free.</strong> Orders ready in 15–25 minutes. For catering 10+ people, email us at <strong>catering@milltowntexmex.com</strong> — we'll bring the fiesta to you.</p></div>
@@ -1746,6 +1801,33 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
         <div class="qr-t" id="qrt"></div>
         <div class="qr-r" id="qrr"></div>
         <button class="qr-btn" onclick="rstQ()">Take It Again</button>
+      </div>
+    </div>
+
+
+    <!-- TACO CATCH GAME -->
+    <div class="gc gc-o" id="taco-game-card">
+      <div class="gt">🌮 Taco Catch!</div>
+      <div class="gd">Tap the falling tacos before they hit the floor! How many can you catch?</div>
+      <div id="taco-game">
+        <div id="tg-header">
+          <div class="tg-stat"><span class="tg-label">Score</span><span class="tg-num" id="tg-score">0</span></div>
+          <div class="tg-stat"><span class="tg-label">Best</span><span class="tg-num" id="tg-best">0</span></div>
+          <div class="tg-stat"><span class="tg-label">Lives</span><span class="tg-num" id="tg-lives">❤️❤️❤️</span></div>
+        </div>
+        <div id="tg-arena">
+          <div id="tg-start-screen">
+            <div style="font-size:3.5rem;">🌮</div>
+            <div style="font-family:'Fredoka One',cursive;font-size:1.6rem;color:var(--cre);margin:8px 0;">Tap to Start!</div>
+            <div style="font-size:.85rem;color:var(--mu);font-style:italic;">Catch the tacos before they fall!</div>
+          </div>
+          <div id="tg-gameover" style="display:none;">
+            <div style="font-size:3rem;">😱</div>
+            <div style="font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--org);margin:8px 0;">Game Over!</div>
+            <div style="font-size:.85rem;color:var(--mu);margin-bottom:16px;" id="tg-final-msg"></div>
+            <button onclick="tcRestart()" style="background:var(--org);color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.15em;text-transform:uppercase;padding:12px 32px;border:none;border-radius:4px;cursor:pointer;">Play Again</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1969,6 +2051,123 @@ window.addEventListener('load',()=>{
            el.style.color=isOpen?'#6abf6a':'#e06060';}
   })();
 });
+
+/* ── TACO CATCH GAME ── */
+const TC_ITEMS = ['🌮','🌮','🌮','🌮','🌮','🌮','🌯','🌯','🫔','💀'];
+const TC_VALS  = {'🌮':1,'🌯':2,'🫔':3,'💀':-1};
+let tcRunning=false,tcScore=0,tcBest=0,tcLives=3,tcSpeed=2200,tcInterval=null,tcItems=[];
+
+function tcStart(){
+  document.getElementById('tg-start-screen').style.display='none';
+  document.getElementById('tg-gameover').style.display='none';
+  tcScore=0;tcLives=3;tcSpeed=2200;tcItems=[];
+  document.getElementById('tg-score').textContent='0';
+  document.getElementById('tg-lives').textContent='❤️❤️❤️';
+  // clear old items
+  document.querySelectorAll('.tg-item').forEach(e=>e.remove());
+  tcRunning=true;
+  tcInterval=setInterval(tcSpawn,tcSpeed);
+  setTimeout(tcSpeedUp,8000);
+}
+
+function tcSpeedUp(){
+  if(!tcRunning)return;
+  clearInterval(tcInterval);
+  tcSpeed=Math.max(900,tcSpeed-250);
+  tcInterval=setInterval(tcSpawn,tcSpeed);
+  if(tcSpeed>900)setTimeout(tcSpeedUp,6000);
+}
+
+function tcSpawn(){
+  if(!tcRunning)return;
+  const arena=document.getElementById('tg-arena');
+  const aw=arena.offsetWidth;
+  const emoji=TC_ITEMS[Math.floor(Math.random()*TC_ITEMS.length)];
+  const el=document.createElement('div');
+  el.className='tg-item';
+  el.textContent=emoji;
+  const x=Math.floor(Math.random()*(aw-60))+10;
+  el.style.left=x+'px';
+  el.style.top='-40px';
+  arena.appendChild(el);
+  const duration=Math.max(1800,3000-(10-tcLives)*100);
+  el.style.transition=`top ${duration}ms linear`;
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ el.style.top=(arena.offsetHeight+10)+'px'; }); });
+  // tap/click handler
+  el.addEventListener('pointerdown',function(e){
+    e.stopPropagation();
+    if(!tcRunning||el.dataset.caught)return;
+    el.dataset.caught='1';
+    const val=TC_VALS[emoji]||1;
+    if(emoji==='💀'){
+      tcLives=Math.max(0,tcLives-1);
+      tcUpdateLives();
+      el.classList.add('tg-miss');
+      if(tcLives<=0){setTimeout(tcGameOver,300);return;}
+    } else {
+      tcScore+=val;
+      document.getElementById('tg-score').textContent=tcScore;
+      el.classList.add('tg-caught');
+      if(tcScore%5===0)tcShowCombo('🔥 x'+tcScore+'!');
+    }
+    setTimeout(()=>el.remove(),300);
+  });
+  // missed — fell off bottom
+  el.addEventListener('transitionend',function(){
+    if(el.dataset.caught||!el.parentNode)return;
+    el.dataset.caught='1';
+    if(emoji!=='💀'){
+      tcLives=Math.max(0,tcLives-1);
+      tcUpdateLives();
+      el.classList.add('tg-miss');
+      if(tcLives<=0){setTimeout(tcGameOver,300);}
+    }
+    setTimeout(()=>{ if(el.parentNode)el.remove(); },300);
+  });
+}
+
+function tcUpdateLives(){
+  const hearts=['','❤️','❤️❤️','❤️❤️❤️'];
+  document.getElementById('tg-lives').textContent=hearts[Math.max(0,tcLives)]||'💔';
+}
+
+function tcShowCombo(msg){
+  const el=document.getElementById('tg-combo');
+  if(!el)return;
+  el.textContent=msg;
+  el.classList.remove('show');
+  void el.offsetWidth;
+  el.classList.add('show');
+}
+
+function tcGameOver(){
+  if(!tcRunning)return;
+  tcRunning=false;
+  clearInterval(tcInterval);
+  document.querySelectorAll('.tg-item').forEach(e=>e.remove());
+  if(tcScore>tcBest){tcBest=tcScore;document.getElementById('tg-best').textContent=tcBest;}
+  const msgs=["Better luck next time! 🌮","Keep practicing, taco catcher!","Not bad! Try again for a higher score!","Great job! Can you beat that?","Amazing! You are a taco master! 🏆"];
+  const msg=tcScore>=15?msgs[4]:tcScore>=10?msgs[3]:tcScore>=5?msgs[2]:tcScore>=2?msgs[1]:msgs[0];
+  document.getElementById('tg-final-msg').textContent='You caught '+tcScore+' tacos! '+msg;
+  document.getElementById('tg-gameover').style.display='flex';
+}
+
+function tcRestart(){ tcStart(); }
+
+// tap arena to start
+document.addEventListener('DOMContentLoaded',function(){
+  const arena=document.getElementById('tg-arena');
+  if(arena){
+    arena.addEventListener('pointerdown',function(){
+      if(!tcRunning)tcStart();
+    });
+  }
+  // add combo div to arena
+  const combo=document.createElement('div');
+  combo.id='tg-combo';
+  if(arena)arena.appendChild(combo);
+});
+
 </script>
 </body>
 </html>
