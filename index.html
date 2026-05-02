@@ -182,6 +182,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .ev-when small{display:block;font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.2em;color:var(--mu);margin-top:2px;}
 .ev-name{font-family:'Fredoka One',cursive;font-size:1.1rem;color:var(--cre);margin-bottom:3px;}
 .ev-det{font-size:.8rem;color:var(--mu);font-style:italic;}
+.event-photo{width:120px;height:auto;margin-top:10px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.3);display:block;}
+@media(max-width:700px){
+  .ev-row{grid-template-columns:1fr;}
+  .ev-row .badge{justify-self:start;}
+  .event-photo{width:100%;max-width:260px;margin-left:0;margin-right:0;}
+}
 /* ── CALENDAR BADGE LINKS ── */
 .badge{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;border:1px solid;white-space:nowrap;border-radius:2px;text-decoration:none;display:inline-block;background-size:200% 100%;background-position:right center;transition:background-position .45s ease,color .45s ease,border-color .45s ease;cursor:pointer;}
 .b-o{color:var(--org);border-color:var(--org);background-image:linear-gradient(to right,var(--org) 50%,transparent 50%);}
@@ -632,11 +638,11 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     <span class="ti">🌮 Taco Tuesday &mdash; $1 Tacos: Al Pastor &middot; Carnitas &middot; Pollo &middot; Chorizo</span><span class="tdot">✦</span>
     <span class="ti">🍲 Jueves Pozolero &mdash; Pozole Verde, Blanco &amp; Rojo Every Thursday</span><span class="tdot">✦</span>
     <span class="ti">🥘 Weekend Specials &mdash; Caldo de Gallina &middot; Mole de Gallina &middot; Barbacoa de Res</span><span class="tdot">✦</span>
-    <span class="ti">🍳 Breakfast All Day, Every Day &mdash; Open to Close!</span><span class="tdot">✦</span>
+    <span class="ti">🍳 Cinco de Mayo Special! $1 Tacos and FREE Virgin MArgaritas! Dont' Miss Out!</span><span class="tdot">✦</span>
     <span class="ti">🌮 Taco Tuesday &mdash; $1 Tacos: Al Pastor &middot; Carnitas &middot; Pollo &middot; Chorizo</span><span class="tdot">✦</span>
     <span class="ti">🍲 Jueves Pozolero &mdash; Pozole Verde, Blanco &amp; Rojo Every Thursday</span><span class="tdot">✦</span>
     <span class="ti">🥘 Weekend Specials &mdash; Caldo de Gallina &middot; Mole de Gallina &middot; Barbacoa de Res</span><span class="tdot">✦</span>
-    <span class="ti">🍳 Breakfast All Day, Every Day &mdash; Open to Close!</span><span class="tdot">✦</span>
+    <span class="ti">🍳 Cinco de Mayo Special! $1 Tacos and FREE Virgin MArgaritas!</span><span class="tdot">✦</span>
   </div>
 </div>
 
@@ -657,7 +663,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
         <p class="ey ey-o">Est. Right Here in Milltown</p>
         <h1 class="hero-hl"><span class="hl-o">Bold</span> Flavors.<br><span class="hl-y">Real</span> Roots.<br><span class="hl-p">No BS.</span></h1>
         <div class="div-o"></div>
-        <p class="hero-sub">Part taqueria, part grill, part breakfast spot. All real. Generous portions of food that hits the mark — every single time...</p>
+        <p class="hero-sub">Authentic Mexican cuisine, part grill, part breakfast spot. All real. Generous portions of food that hits the mark — every single time...</p>
         <div class="hero-btns">
           <button class="btn btn-o" onclick="showPage('menu')">See the Menu</button>
           <a href="tel:+17323174464" class="btn btn-o">📞 Order Now</a>
@@ -796,7 +802,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
         <div class="ev-row"><div class="ev-when" style="color:var(--org)">Thursday<small>All Day</small></div><div><div class="ev-name">Jueves Pozolero</div><div class="ev-det">Full pozole menu — Verde, Blanco, and Rojo. Rich broth, big bowls.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-o">Thurs Only</a></div>
         <div class="ev-row"><div class="ev-when" style="color:var(--yel)">Saturday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Begins</div><div class="ev-det">Caldo de Gallina de Rancho, Mole de Gallina, Barbacoa de Res, Chuletas en Adobo, Tortas de Camarón.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-y">Weekend</a></div>
         <div class="ev-row"><div class="ev-when" style="color:var(--grn)">Sunday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Continues</div><div class="ev-det">All weekend specials available. Plus our full Sunday breakfast menu from open.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-g">Weekend</a></div>
-        <div class="ev-row"><div class="ev-when" style="color:var(--cyn)">May 5th<small>Open to Close</small></div><div><div class="ev-name">Cinco De Mayo!</div><div class="ev-det">Come see what we have in store for you!</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-c">May 5 Only</a></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--cyn)">May 5th<small>Open to Close</small></div><div><div class="ev-name">Cinco De Mayo!</div><div class="ev-det">Celebrate with us! $1 Tacos and FREE Virgin Margaritas!</div><img src="photos/cinco-de-mayo-flyer.jpg" alt="Cinco de Mayo Celebration" class="event-photo"></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-c">May 5 Only</a></div>
       </div>
     </div>
   </div>
