@@ -172,6 +172,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;height:72px;
 .sp-badge-link.badge-grn{background-image:linear-gradient(to right,var(--grn) 50%,rgba(42,136,64,.14) 50%);color:var(--grn);border:1px solid rgba(42,136,64,.3);}
 .sp-badge-link.badge-red{background-image:linear-gradient(to right,var(--red) 50%,rgba(204,32,32,.14) 50%);color:var(--red);border:1px solid rgba(204,32,32,.3);}
 
+/* REVIEWS */
+.rev-wrap{background:var(--near);border-top:1px solid var(--bs);border-bottom:1px solid var(--bs);padding:72px 32px;}
+.rev-inner{max-width:1100px;margin:0 auto;}
+.rev-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:36px;}
+.rev-head .title{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--cre);}
+.rev-head .divider{width:70px;height:3px;border-radius:2px;background:var(--org);flex-shrink:0;}
+.rev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+.rev-card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;}
+.rev-card:hover{transform:translateY(-8px);border-color:rgba(240,112,16,.25);box-shadow:0 18px 36px rgba(0,0,0,.35),0 0 0 1px rgba(240,112,16,.22),0 0 20px rgba(240,112,16,.12);}
+.rev-photo{width:100%;height:auto;display:block;object-fit:contain;}
+@media(max-width:980px){
+  .rev-grid{display:flex;overflow-x:auto;gap:16px;padding:0 16px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+  .rev-grid::before,.rev-grid::after{content:'';flex:0 0 16px;}
+  .rev-card{min-width:min(86vw,340px);max-width:340px;flex:0 0 auto;scroll-snap-align:start;}
+}
+@media(max-width:700px){
+  .rev-wrap{padding:60px 18px;}
+  .rev-head{flex-direction:column;align-items:flex-start;}
+  .rev-head .divider{width:40px;}
+}
+
 /* EVENTS */
 .ev-wrap{background:var(--near);border-top:1px solid var(--bs);border-bottom:1px solid var(--bs);padding:72px 32px;}
 .ev-inner{max-width:1100px;margin:0 auto;}
@@ -638,11 +659,11 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     <span class="ti">🌮 Taco Tuesday &mdash; $1 Tacos: Al Pastor &middot; Carnitas &middot; Pollo &middot; Chorizo</span><span class="tdot">✦</span>
     <span class="ti">🍲 Jueves Pozolero &mdash; Pozole Verde, Blanco &amp; Rojo Every Thursday</span><span class="tdot">✦</span>
     <span class="ti">🥘 Weekend Specials &mdash; Caldo de Gallina &middot; Mole de Gallina &middot; Barbacoa de Res</span><span class="tdot">✦</span>
-    <span class="ti">🍳 Breakfast all day, every day.</span><span class="tdot">✦</span>
+    <span class="ti">🍳 Cinco de Mayo Special! $1 Tacos and FREE Virgin MArgaritas! Dont' Miss Out!</span><span class="tdot">✦</span>
     <span class="ti">🌮 Taco Tuesday &mdash; $1 Tacos: Al Pastor &middot; Carnitas &middot; Pollo &middot; Chorizo</span><span class="tdot">✦</span>
     <span class="ti">🍲 Jueves Pozolero &mdash; Pozole Verde, Blanco &amp; Rojo Every Thursday</span><span class="tdot">✦</span>
     <span class="ti">🥘 Weekend Specials &mdash; Caldo de Gallina &middot; Mole de Gallina &middot; Barbacoa de Res</span><span class="tdot">✦</span>
-    <span class="ti">🍳 Breakfast all day, every day.</span><span class="tdot">✦</span>
+    <span class="ti">🍳 Cinco de Mayo Special! $1 Tacos and FREE Virgin MArgaritas!</span><span class="tdot">✦</span>
   </div>
 </div>
 
@@ -791,6 +812,30 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
     </div>
   </div>
 
+  <!-- REVIEWS -->
+  <div class="rev-wrap">
+    <div class="rev-inner">
+      <div class="rev-head">
+        <div>
+          <p class="ey ey-o">Reviews</p>
+          <h2 class="sec-h2">What Our Customers Are Saying</h2>
+        </div>
+        <div class="divider" aria-hidden="true"></div>
+      </div>
+      <div class="rev-grid" role="list">
+        <article class="rev-card" role="listitem">
+          <img src="photos/Indranil%20D%20review%20card.png" alt="Customer review card" class="rev-photo">
+        </article>
+        <article class="rev-card" role="listitem">
+          <img src="photos/Thomas%20A%20review%20card.png" alt="Customer review card" class="rev-photo">
+        </article>
+        <article class="rev-card" role="listitem">
+          <img src="photos/Zsolt%20A%20review%20card.png" alt="Customer review card" class="rev-photo">
+        </article>
+      </div>
+    </div>
+  </div>
+
   <!-- EVENTS -->
   <div class="ev-wrap">
     <div class="ev-inner">
@@ -802,7 +847,7 @@ footer{background:var(--near);border-top:2px solid var(--org);padding:48px 32px 
         <div class="ev-row"><div class="ev-when" style="color:var(--org)">Thursday<small>All Day</small></div><div><div class="ev-name">Jueves Pozolero</div><div class="ev-det">Full pozole menu — Verde, Blanco, and Rojo. Rich broth, big bowls.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-o">Thurs Only</a></div>
         <div class="ev-row"><div class="ev-when" style="color:var(--yel)">Saturday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Begins</div><div class="ev-det">Caldo de Gallina de Rancho, Mole de Gallina, Barbacoa de Res, Chuletas en Adobo, Tortas de Camarón.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-y">Weekend</a></div>
         <div class="ev-row"><div class="ev-when" style="color:var(--grn)">Sunday<small>All Day</small></div><div><div class="ev-name">Rancho Weekend Continues</div><div class="ev-det">All weekend specials available. Plus our full Sunday breakfast menu from open.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-g">Weekend</a></div>
-        <div class="ev-row"><div class="ev-when" style="color:var(--cyn)">Daily<small>Open to Close</small></div><div><div class="ev-name">Breakfast Served</div><div class="ev-det">Breakfast all day, every day.</div></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-c">Daily</a></div>
+        <div class="ev-row"><div class="ev-when" style="color:var(--cyn)">May 5th<small>Open to Close</small></div><div><div class="ev-name">Cinco De Mayo!</div><div class="ev-det">Celebrate with us! $1 Tacos and FREE Virgin Margaritas!</div><img src="photos/cincodemayo.jpg"alt="Cinco de Mayo Celebration" class="event-photo"></div><a href="https://maps.google.com/?q=123+Main+St,+Milltown,+NJ+08850" target="_blank" rel="noreferrer noopener" class="badge b-c">May 5 Only</a></div>
       </div>
     </div>
   </div>
